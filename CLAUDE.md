@@ -37,6 +37,7 @@ This document defines Claude's behavioral constraints in this repository.
 - Prioritize loose coupling, scalability, and AI-readable structure.
 - Delegate implementation to Codex after planning.
 - Do not use `any` except at explicit external boundaries.
+- Annotate all function signatures and variables with types.
 - Do not add destructive git operations to settings.local.json allow list.
 
 ## Frontend

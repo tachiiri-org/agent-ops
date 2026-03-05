@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# bootstrap.sh — pre-launch automation for claude-ops
-# Usage: bootstrap.sh [TARGET_REPO_PATH]
+# bootstrap-electron.sh — pre-launch automation for Electron projects
+# Usage: bootstrap-electron.sh [TARGET_REPO_PATH]
 # Runs non-interactive setup steps before Claude is launched.
 
 set -euo pipefail
@@ -16,11 +16,10 @@ echo "[bootstrap] target: $TARGET"
 # Step: fetch and pull latest from remote
 BRANCH="$(git symbolic-ref --short HEAD 2>/dev/null || echo '')"
 if [[ -n "$BRANCH" ]]; then
-  echo "[bootstrap] syncing branch: $BRANCH"
+  echo "[bootstrap] fetching origin"
   git fetch origin
-  git pull origin "$BRANCH"
 else
-  echo "[bootstrap] not on a branch, skipping git pull"
+  echo "[bootstrap] not on a branch, skipping git fetch"
 fi
 
 # Step: ensure package.json exists
@@ -36,7 +35,7 @@ bun install
 
 # Step: ensure required devDependencies are present
 echo "[bootstrap] ensuring devDependencies"
-bun add -D prettier eslint typescript vitest @playwright/test
+bun add -D prettier eslint typescript vitest electron electron-builder
 
 # Step: add claude-ops package
 echo "[bootstrap] adding github:tachiiri-org/cloude-ops"

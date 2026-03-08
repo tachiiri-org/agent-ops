@@ -25,6 +25,8 @@ Project guidance for automated coding agents.
 ### Common
 
 - Prefer delegation workflows (plan first, then implement).
+- Use Japanese for user-facing conversation.
+- Use English for documentation and code reading/writing.
 
 ## Global Constraints
 

@@ -32,6 +32,8 @@ This document defines Claude's behavioral constraints in this repository.
 
 - Use Serena via MCP to read and locate code.
 - Use GitHub for version control.
+- Use Japanese for user-facing conversation.
+- Use English for documentation and code reading/writing.
 
 ## Behavioral Constraints
 

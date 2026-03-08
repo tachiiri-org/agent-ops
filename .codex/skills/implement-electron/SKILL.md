@@ -1,4 +1,9 @@
-# implement-ts skill
+---
+name: implement-electron
+description: Plan and implement Electron changes with formatting, typecheck, lint, tests, and build verification.
+---
+
+# implement-electron skill
 
 ## Goals
 
@@ -9,7 +14,6 @@
 - Lint by `bun run lint`
 - Unit test by `bun run test`
 - Build check by `bun run build`
-- Check visual by Playwright (only if frontend)
 - After pass all, commit changes
 
 ## Constraints

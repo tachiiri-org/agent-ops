@@ -1,4 +1,9 @@
-# implement-electron skill
+---
+name: implement-ts
+description: Plan and implement TypeScript changes with prettier, tsc, lint, test, and build checks.
+---
+
+# implement-ts skill
 
 ## Goals
 
@@ -9,6 +14,7 @@
 - Lint by `bun run lint`
 - Unit test by `bun run test`
 - Build check by `bun run build`
+- Check visual by Playwright (only if frontend)
 - After pass all, commit changes
 
 ## Constraints

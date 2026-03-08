@@ -1,3 +1,8 @@
+---
+name: deploy-py
+description: Build a Python wheel, upload release artifacts to R2, and publish latest.json metadata.
+---
+
 # deploy-py command
 
 ## Goals

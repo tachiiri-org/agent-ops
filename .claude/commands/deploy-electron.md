@@ -1,4 +1,3 @@
-
 # deploy-electron command
 
 ## Goals

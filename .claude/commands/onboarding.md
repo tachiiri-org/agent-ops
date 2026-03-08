@@ -1,4 +1,3 @@
-
 # onboarding command
 
 ## Goals

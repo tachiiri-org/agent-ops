@@ -1,3 +1,8 @@
+---
+name: implement-py
+description: Plan and implement Python changes with ruff, pyright, and pytest validation before commit.
+---
+
 # implement-py skill
 
 ## Goals

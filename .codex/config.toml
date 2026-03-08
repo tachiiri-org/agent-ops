@@ -1,0 +1,32 @@
+model = "gpt-5.3-codex"
+model_reasoning_effort = "medium"
+personality = "pragmatic"
+[projects."/home/tachiiri/worksheet-pages-registrator"]
+trust_level = "trusted"
+
+[projects."/home/tachiiri/recipe-plan-registrator"]
+trust_level = "trusted"
+
+[projects."/home/tachiiri/monthly-recipe-reader"]
+trust_level = "trusted"
+
+[projects."/home/tachiiri/project/recipe-ingredient-mapper"]
+trust_level = "trusted"
+
+[projects."/home/tachiiri/project/ingredient-stock-simulator"]
+trust_level = "trusted"
+
+[projects."/home/tachiiri/project/worksheet-printer"]
+trust_level = "trusted"
+
+[projects."/home/tachiiri/project/stock-checker"]
+trust_level = "trusted"
+
+[projects."/home/tachiiri/project/table-printer"]
+trust_level = "trusted"
+
+[projects."/home/tachiiri/project/internal-gateway"]
+trust_level = "trusted"
+
+[notice.model_migrations]
+gpt-5 = "gpt-5.3-codex"

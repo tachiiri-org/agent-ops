@@ -1,7 +1,3 @@
----
-name: deploy-electron
-description: Package and publish an Electron app release to GitHub Releases with branch-aware prerelease behavior and artifact upload.
----
 
 # deploy-electron command
 

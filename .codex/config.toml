@@ -28,5 +28,11 @@ trust_level = "trusted"
 [projects."/home/tachiiri/project/internal-gateway"]
 trust_level = "trusted"
 
+[projects."/home/tachiiri/project/claude-launcher"]
+trust_level = "trusted"
+
+[projects."/home/tachiiri"]
+trust_level = "trusted"
+
 [notice.model_migrations]
 gpt-5 = "gpt-5.3-codex"

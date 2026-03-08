@@ -1,7 +1,3 @@
----
-name: onboarding
-description: "Perform repository onboarding: read project guidance and architecture docs, inspect git status/history, classify repo role, and prepare a feature branch without changing code."
----
 
 # onboarding command
 

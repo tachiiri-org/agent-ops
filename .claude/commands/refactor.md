@@ -1,4 +1,3 @@
-
 # refactor command
 
 ## Steps

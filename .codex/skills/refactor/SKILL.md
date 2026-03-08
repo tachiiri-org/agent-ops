@@ -1,3 +1,8 @@
+---
+name: refactor
+description: Drive principle-aligned refactoring through onboarding context, planning, and incremental implementation.
+---
+
 # refactor command
 
 ## Steps

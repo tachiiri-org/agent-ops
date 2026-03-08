@@ -1,3 +1,8 @@
+---
+name: release
+description: Create a release PR from dev to main after verifying branch and remote state.
+---
+
 # release command
 
 ## Goals

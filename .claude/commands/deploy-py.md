@@ -1,4 +1,3 @@
-
 # deploy-py command
 
 ## Goals

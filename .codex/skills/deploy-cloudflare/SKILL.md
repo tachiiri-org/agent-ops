@@ -1,3 +1,8 @@
+---
+name: deploy-cloudflare
+description: Deploy a TypeScript Cloudflare Worker to staging using bun run deploy:dev.
+---
+
 # deploy-ts command
 
 ## Goals

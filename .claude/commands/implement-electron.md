@@ -1,4 +1,3 @@
-
 # implement-electron skill
 
 ## Goals

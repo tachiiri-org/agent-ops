@@ -1,3 +1,8 @@
+---
+name: onboarding
+description: "Run repository onboarding workflow: sync guidance files, inspect git state, classify role, and start feature branch."
+---
+
 # onboarding command
 
 ## Goals
@@ -6,6 +11,8 @@
 
 ## Steps
 
+1. If running in Windows Terminal (`WT_SESSION` is set), set the current tab title to the repository name:
+   - `printf '\033]0;%s\007' "$(basename "$PWD")"`
 1. Copy root guidance files from `/home/tachiiri` into the current working directory:
    - `cp /home/tachiiri/agents.md ./agents.md`
    - `cp /home/tachiiri/architecture.md ./architecture.md`

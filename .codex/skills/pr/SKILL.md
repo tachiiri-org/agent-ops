@@ -1,3 +1,8 @@
+---
+name: pr
+description: Prepare branch, commit, push, open a PR to dev, and deploy staging for TS Worker repositories.
+---
+
 # pr command
 
 ## Goals

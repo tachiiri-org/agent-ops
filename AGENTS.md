@@ -35,6 +35,22 @@ Project guidance for automated coding agents.
 - Do not create multi-responsibility or god files.
 - Do not merge files based on size or convenience.
 - Do not use `any` except at explicit external boundaries.
+- Treat tenant as the top-level ownership scope; do not infer tenant context from unverified input.
+- Do not accept browser-asserted identity or `x-actor-*` style identity headers.
+- Use verified session or token claims only for identity and authorization context.
+- Use initiator fields for audit only; never as authorization input.
+- Return `401` for authentication failure and `403` for authorization failure.
+- Classify operations explicitly; do not infer semantic action from path or method alone.
+- Require idempotency for `mutate`, `irreversible`, and `external_effect` operations.
+- Keep idempotency end-to-end and let adapters complete it.
+- Use operation catalogs and schemas as the authority for internal API contracts.
+- Treat breaking semantic changes as explicit release-level changes with version and rollout strategy.
+- Use explicit header allowlists with default drop; reject ambiguous or invalid identity-related header input.
+- Keep secrets and signing keys out of repositories; store references only.
+- Require explicit issuer allowlists and safe key rotation overlap for JWT trust.
+- Keep normative guidance separate from staging or exploratory documents.
+- Keep detailed policy and fault explanations internal.
+- Require audit events for irreversible or external-effect operations.
 - Do not add destructive git operations to `settings.local.json` allow lists.
 
 ## Git / Release

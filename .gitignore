@@ -12,6 +12,8 @@
 !/install.sh
 !/package.template.json
 !/principles.md
+!/principles/
+!/principles/*.md
 
 # keep tracked .claude files only
 !/.claude/

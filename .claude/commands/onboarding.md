@@ -3,42 +3,57 @@
 ## Goals
 
 - understand how to behave
+- gather the minimum principle and profile context required for the intended work
 
 ## Steps
 
-1. Copy root guidance files from `/home/tachiiri` into the current working directory:
-   - `cp /home/tachiiri/agents.md ./agents.md`
-   - `cp /home/tachiiri/architecture.md ./architecture.md`
-   - `cp /home/tachiiri/claude.md ./claude.md`
-   - `mkdir -p ./principles`
-   - `cp -r /home/tachiiri/principles/. ./principles/.`
-2. Read `agents.md`
-3. Read `architecture.md` (system topology)
+1. Sync root guidance files from `/home/tachiiri` into the current working directory only when the current repository is not `/home/tachiiri`:
+   - Use the repository root files as the source of truth: `AGENTS.md`, `CLAUDE.md`, `architecture.mmd`, `principles/`, and `profiles/`
+   - Never overwrite an existing repo-local guidance file without checking whether local customization must be preserved.
+   - If a target file is missing, copy it from `/home/tachiiri`.
+   - If the current working directory is `/home/tachiiri`, skip the copy step.
+2. Read `AGENTS.md`
+3. Read `architecture.mmd` (system topology)
 4. Read `principles/core.md`
-5. Read `claude.md`
-6. Fetch latest remote refs before branch/status decisions:
+5. Read `profiles/core.md`
+6. Read `CLAUDE.md`
+7. Fetch latest remote refs before branch/status decisions:
    - If the environment is sandboxed, run `git fetch origin` with escalated permissions from the start.
    - Do not retry the same remote Git command in the sandbox after a network-resolution failure.
-7. Verify working tree is clean
-8. Verify local `dev` alignment with `origin/dev`; if behind, fast-forward:
+8. Verify working tree is clean
+9. Verify local `dev` alignment with `origin/dev`; if behind, fast-forward:
    - `git checkout dev`
    - If the environment is sandboxed, run `git pull --ff-only origin dev` with escalated permissions from the start.
-9. Read last 10 commit logs (prefer checking `origin/dev` after fetch)
-10. Classify repository role by cross-referencing `architecture.md` (front / bff / gateway / adapter / electron / python / ops)
-11. Read the matching role-specific file under `principles/roles/` for the classified role
-12. Ask human goals
-13. Create a feature branch off up-to-date `dev` based on stated goals (e.g. feature/xxx, fix/xxx)
-14. Execute the implement skill matching the repo role:
+10. Read last 10 commit logs (prefer checking `origin/dev` after fetch)
+11. Classify repository role by cross-referencing `architecture.mmd` (front / bff / gateway / adapter / electron / python / ops)
+12. Read the matching role-specific file under `principles/roles/` for the classified role
+13. Ask human goals
+14. Read the relevant domain document(s) under `principles/domains/` based on the stated goals
+   - Read only the domain documents that constrain the intended change.
+   - Use `principles/core.md` as the index for available domain documents.
+   - Prefer deciding domain reads from the user goal before starting development work.
+15. Select and read only the applicable profile document(s) after the role and goal are known
+   - Use `profiles/core.md` as the index for profile axes.
+   - Use explicit repo-local adoption, task scope, and concrete runtime/config files before architecture-level defaults.
+   - Read `profiles/runtime/cloudflare-pages.md` for frontend repositories that run on Pages.
+   - Read `profiles/runtime/cloudflare-workers.md` for BFF, gateway, or adapter repositories that run on Workers.
+   - Read `profiles/runtime/electron.md` for Electron repositories.
+   - Read `profiles/identity/auth0.md` only when the repository directly terminates, exchanges, refreshes, initiates, or validates Auth0-issued credentials.
+   - Read matching files under `profiles/providers/` only when the repository directly integrates with those providers, typically at the adapter boundary.
+   - Do not infer identity or provider profiles from architecture alone.
+16. Create a feature branch off up-to-date `dev` based on stated goals (e.g. feature/xxx, fix/xxx)
+17. Execute the implement skill matching the repo role:
    - front / bff / gateway / adapter → `implement-ts`
    - electron → `implement-electron`
    - python → `implement-py`
    - ops → no implement skill (ops repo manages skills, not product code)
 
-## Constrains
+## Constraints
 
 - run each Bash command separately, not as compound commands (e.g. `&&`)
-- don't read codes
-- don't change codes
+- don't read code before the guidance and workflow context is loaded
+- don't change code
+- don't overwrite repo-local guidance files blindly
 - no authentication checks
 - no tool installation
 - don't start development work

@@ -7,7 +7,8 @@ description: Plan and implement Python changes with ruff, pyright, and pytest va
 
 ## Goals
 
-- Restate the goal, affected surface, and relevant domain constraints from onboarding
+- Restate the goal, affected surface, and relevant domain and profile constraints from onboarding
+- Reconstruct missing onboarding profile context before editing if the current task did not enter through onboarding
 - Plan the minimal change set before editing
 - Define expected behavior before coding
 - Write or update tests first when behavior changes or a bug is being fixed
@@ -22,6 +23,8 @@ description: Plan and implement Python changes with ruff, pyright, and pytest va
 ## Constraints
 
 - treat onboarding context as required input
+- treat selected profile documents as required input whenever the repository adopts runtime, identity, or provider profiles
+- if onboarding context is missing, recover the minimum role, domain, and profile context before changing code
 - use tests-first by default for behavioral changes
 - if the change is purely mechanical and behavior-preserving, tests-first is optional but validation is still required
 - do not create pr

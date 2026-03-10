@@ -15,24 +15,26 @@
 
 1. Run the repository bootstrap flow for the target path
 2. Read `CLAUDE.md`
-3. Read `principles/roles/front.md`
-4. Verify working tree is clean
-5. Ensure `main` and `dev` branch setup exists and switch to a feature branch
-6. Verify GitHub auth status
-7. Verify Codex and Serena availability
-8. Activate the project in Serena
-9. Apply the frontend baseline scaffold only:
+3. Read `principles/core.md`
+4. Read `profiles/core.md`
+5. Read `principles/roles/front.md`
+6. Verify working tree is clean
+7. Ensure `main` and `dev` branch setup exists and switch to a feature branch
+8. Verify GitHub auth status
+9. Verify Codex and Serena availability
+10. Activate the project in Serena
+11. Apply the frontend baseline scaffold only:
    - a minimal page
    - explicit loading and error-state placeholders
    - no application features beyond scaffold
-10. Apply the tool modules listed above
-11. Require composition with:
+12. Apply the tool modules listed above
+13. Require composition with:
    - `setup-runtime-cloudflare-pages` when the frontend runs on Pages
-12. Optionally compose with:
+14. Optionally compose with:
    - `setup-idp-auth0` when the frontend owns login initiation details
-13. Run the repository's standard validation commands
-14. Commit the scaffold
-15. Create a pull request targeting `dev`
+15. Run the repository's standard validation commands
+16. Commit the scaffold
+17. Create a pull request targeting `dev`
 
 ## Constraints
 

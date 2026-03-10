@@ -1,11 +1,13 @@
 # release command
 
-## Goals
+## Steps
 
-- Verify current branch is `dev` (switch to dev if not)
-- Ensure `dev` is pushed to remote
-- Create PR from `dev` targeting `main`
-- Output PR URL
+1. Read `principles/domains/ops-governance.md`
+2. Read `principles/domains/compatibility-and-change.md`
+3. Verify current branch is `dev` (switch to dev if not)
+4. Ensure `dev` is pushed to remote
+5. Create PR from `dev` targeting `main`
+6. Output PR URL
 
 ## Constraints
 

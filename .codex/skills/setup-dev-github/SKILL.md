@@ -7,15 +7,18 @@ description: Bootstrap GitHub development-platform state for a new repository, i
 
 ## Workflow
 
-1. Verify the target directory exists locally
-2. Verify working tree is clean
-3. Verify GitHub auth status
-4. Create the remote repository on GitHub
-5. Add or update the `origin` remote
-6. Ensure `main` exists locally and remotely
-7. Ensure `dev` exists off `main`
-8. Push initial branches as needed
-9. Confirm the repository is ready for role-, runtime-, idp-, and provider-setup modules
+1. Read `principles/core.md`
+2. Read `principles/roles/ops.md`
+3. Read `principles/domains/ops-governance.md`
+4. Verify the target directory exists locally
+5. Verify working tree is clean
+6. Verify GitHub auth status
+7. Create the remote repository on GitHub
+8. Add or update the `origin` remote
+9. Ensure `main` exists locally and remotely
+10. Ensure `dev` exists off `main`
+11. Push initial branches as needed
+12. Confirm the repository is ready for role-, runtime-, idp-, and provider-setup modules
 
 ## Constraints
 

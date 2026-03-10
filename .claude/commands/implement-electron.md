@@ -2,7 +2,8 @@
 
 ## Goals
 
-- Restate the goal, affected surface, and relevant domain constraints from onboarding
+- Restate the goal, affected surface, and relevant domain and profile constraints from onboarding
+- Reconstruct missing onboarding profile context before editing if the current task did not enter through onboarding
 - Plan the minimal change set before editing
 - Define expected behavior before coding
 - Write or update tests first when behavior changes or a bug is being fixed
@@ -21,6 +22,9 @@
 ## Constraints
 
 - treat onboarding context as required input
+- require `profiles/runtime/electron.md` when the repository adopts the Electron runtime profile
+- require `profiles/identity/auth0.md` when the repository directly integrates with Auth0
+- if onboarding context is missing, recover the minimum role, domain, and profile context before changing code
 - use tests-first by default for behavioral changes
 - if the change is purely mechanical and behavior-preserving, tests-first is optional but validation is still required
 - do not create pr

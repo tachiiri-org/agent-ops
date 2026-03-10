@@ -27,6 +27,8 @@ description: Add Auth0 identity setup guidance and boundary-specific scaffolding
    - `principles/roles/bff.md`
    - `principles/roles/electron.md`
    - `principles/roles/front.md`
+   - `principles/roles/gateway.md` when a gateway directly validates Auth0-issued credentials
+   - `principles/roles/adapter.md` when an adapter directly validates Auth0-issued credentials
 5. Verify working tree is clean
 6. Classify whether the repository directly terminates, exchanges, refreshes, initiates, or validates Auth0-issued credentials
 7. Stop with an explanation if the repository does not directly integrate with Auth0

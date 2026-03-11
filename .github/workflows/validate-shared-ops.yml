@@ -63,6 +63,8 @@ jobs:
               *Path(".github/workflows").glob("*.yml"),
               *Path(".claude/templates/cloudflare/pages").glob("*.yml"),
               *Path(".claude/templates/cloudflare/workers").glob("*.yml"),
+              *Path(".claude/templates/electron").glob("*.yml"),
+              *Path(".claude/templates/python").glob("*.yml"),
               Path(".claude/templates/cloudflare/release-pr.yml"),
           ]
 

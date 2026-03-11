@@ -25,7 +25,7 @@ description: Reconcile an ops repository to the expected shared-guidance and aut
 12. Reconcile GitHub repository policy for this role when safe:
    - ensure the repository is PR-based
    - ensure `dev` is protected for CI-gated auto-merge
-   - ensure required checks include the ops repository CI checks that validate shared guidance and automation definitions
+   - ensure required checks include `Validate Shared Ops / validate-shared-ops`
    - ensure auto-merge is enabled after the ops CI gate passes
 13. Report any unsafe drift that should not be overwritten automatically
 14. Run the repository's standard validation commands

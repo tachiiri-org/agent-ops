@@ -11,6 +11,9 @@
 !/architecture.mmd
 !/install.sh
 !/package.template.json
+!/.github/
+!/.github/workflows/
+!/.github/workflows/*.yml
 !/tooling/
 !/tooling/*.json
 !/profiles/

@@ -1,0 +1,119 @@
+name: Validate Shared Ops
+
+on:
+  pull_request:
+    branches:
+      - dev
+  push:
+    branches:
+      - dev
+
+jobs:
+  validate-shared-ops:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install YAML parser
+        run: python -m pip install pyyaml
+
+      - name: Validate shell scripts
+        run: |
+          find .claude/scripts .claude/templates -type f -name '*.sh' -print0 | while IFS= read -r -d '' file; do
+            bash -n "$file"
+          done
+
+      - name: Validate Python helpers
+        run: |
+          find .claude/templates -type f -name '*.py' -print0 | while IFS= read -r -d '' file; do
+            python -m py_compile "$file"
+          done
+
+      - name: Validate JSON baselines
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          paths = [
+              Path(".claude/settings.json"),
+              Path(".mcp.json"),
+              Path("package.template.json"),
+              Path("tooling/recommended-versions.json"),
+          ]
+
+          for path in paths:
+              json.loads(path.read_text())
+              print(path)
+          PY
+
+      - name: Validate YAML files
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+
+          paths = [
+              *Path(".github/workflows").glob("*.yml"),
+              *Path(".claude/templates/cloudflare/pages").glob("*.yml"),
+              *Path(".claude/templates/cloudflare/workers").glob("*.yml"),
+              Path(".claude/templates/cloudflare/release-pr.yml"),
+          ]
+
+          for path in paths:
+              yaml.safe_load(path.read_text())
+              print(path)
+          PY
+
+      - name: Validate skill and command mirrors
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          commands = {path.stem for path in Path(".claude/commands").glob("*.md")}
+          skills = {
+              path.parent.name
+              for path in Path(".codex/skills").glob("*/SKILL.md")
+              if path.parent.parent.name != ".system"
+          }
+
+          missing_commands = sorted(skills - commands)
+          missing_skills = sorted(commands - skills)
+
+          if missing_commands or missing_skills:
+              raise SystemExit(
+                  "command/skill mismatch: "
+                  f"missing commands={missing_commands}, missing skills={missing_skills}"
+              )
+          PY
+
+      - name: Validate recommended versions sync
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          package = json.loads(Path("package.template.json").read_text())
+          versions = json.loads(Path("tooling/recommended-versions.json").read_text())
+
+          expected = versions["typescript"]
+          actual = package["devDependencies"]
+
+          missing = {
+              name: version
+              for name, version in expected.items()
+              if actual.get(name) != version
+          }
+
+          if missing:
+              raise SystemExit(f"package.template.json is out of sync: {missing}")
+          PY
+
+      - name: Validate tracked file formatting safety
+        run: git diff --check

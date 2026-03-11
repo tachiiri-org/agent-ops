@@ -45,6 +45,7 @@ This document defines Claude's behavioral constraints in this repository.
 - Don't infer tenant context from unverified input.
 - Don't accept browser-asserted identity.
 - Don't accept `x-actor-*` style identity headers.
+- Don't use identity-related `x-*` headers as internal API contract inputs.
 - Use verified session or token claims only for identity and authorization context.
 - Use initiator fields for audit only, never as authorization input.
 - Return `401` for authentication failure and `403` for authorization failure.
@@ -60,7 +61,9 @@ This document defines Claude's behavioral constraints in this repository.
 - Keep normative guidance separate from staging or exploratory documents.
 - Keep detailed policy and fault explanations internal.
 - Require audit events for irreversible or external-effect operations.
-- Don't deploy to prod with Wrangler
+- Don't deploy to prod with Wrangler directly
+- Expose Cloudflare staging deploys as `bun run deploy:staging` via runtime setup
+- Run Cloudflare staging deploys from CI on push to `dev`
 - Don't commit with no .gitigonore in repository
 - Setup tools if default tools not installed
 - Deploy only via merge to main.

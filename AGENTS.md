@@ -37,6 +37,7 @@ Project guidance for automated coding agents.
 - Do not use `any` except at explicit external boundaries.
 - Treat tenant as the top-level ownership scope; do not infer tenant context from unverified input.
 - Do not accept browser-asserted identity or `x-actor-*` style identity headers.
+- Do not use identity-related `x-*` headers as internal API contract inputs.
 - Use verified session or token claims only for identity and authorization context.
 - Use initiator fields for audit only; never as authorization input.
 - Return `401` for authentication failure and `403` for authorization failure.
@@ -55,7 +56,9 @@ Project guidance for automated coding agents.
 
 ## Git / Release
 
-- Do not deploy to production with Wrangler; use `bun run deploy:dev` for staging only.
+- Do not deploy to production with Wrangler directly.
+- For Cloudflare runtime repositories, expose staging deploys as `bun run deploy:staging` via runtime setup.
+- Run Cloudflare staging deploys from CI on `push` to `dev`.
 - Deploy only via merge to main.
 - Do not push directly to main.
 - Use pull requests for all merges.

@@ -13,3 +13,9 @@ tool_timeout_sec = 120
 
 [projects."/home/tachiiri"]
 trust_level = "trusted"
+
+[projects."/home/tachiiri/project/github-service"]
+trust_level = "trusted"
+
+[projects."/home/tachiiri/project/internal-gateway"]
+trust_level = "trusted"

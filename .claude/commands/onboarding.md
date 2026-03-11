@@ -48,6 +48,7 @@
    - adapter → `setup-role-adapter`
    - electron → `setup-role-electron`
    - python → `setup-role-python`
+   - ops → `setup-role-ops`
 17. Otherwise, create a feature branch off up-to-date `dev` based on stated goals (e.g. feature/xxx, fix/xxx)
 18. Otherwise, execute the implement skill matching the repo role:
    - front / bff / gateway / adapter → `implement-ts`

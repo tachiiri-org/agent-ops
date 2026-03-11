@@ -26,6 +26,8 @@
 !/profiles/providers/*.md
 !/principles/
 !/principles/*.md
+!/principles/runtime/
+!/principles/runtime/*.md
 !/principles/roles/
 !/principles/roles/*.md
 !/principles/domains/
@@ -44,7 +46,11 @@
 !/.claude/scripts/*.sh
 /.claude/templates/*
 !/.claude/templates/cloudflare/
+!/.claude/templates/electron/
+!/.claude/templates/python/
 /.claude/templates/cloudflare/*
+/.claude/templates/electron/*
+/.claude/templates/python/*
 !/.claude/templates/cloudflare/common/
 !/.claude/templates/cloudflare/release-pr.yml
 !/.claude/templates/cloudflare/pages/
@@ -55,6 +61,8 @@
 !/.claude/templates/cloudflare/common/*
 !/.claude/templates/cloudflare/pages/*
 !/.claude/templates/cloudflare/workers/*
+!/.claude/templates/electron/*
+!/.claude/templates/python/*
 
 # keep tracked .codex files only
 !/.codex/

@@ -1,23 +1,43 @@
 ---
 name: setup-runtime-electron
-description: Bootstrap Electron runtime requirements and baseline tooling for repositories that run as Electron applications.
+description: Reconcile Electron runtime requirements and delivery automation for repositories that run as Electron applications.
 ---
 
 # setup-runtime-electron command
 
+## Tool Modules
+
+- Required:
+  - `setup-tool-bun`
+  - `setup-tool-typescript`
+  - `setup-tool-eslint`
+  - `setup-tool-prettier`
+  - `setup-tool-vitest`
+- Optional:
+  - `setup-tool-playwright`
+
 ## Workflow
 
-1. Read `profiles/runtime/electron.md`
-2. Verify the repository is intended to run as an Electron application
-3. Run `bootstrap-electron.sh [TARGET_REPO_PATH]`
-4. Ensure baseline tooling and Electron runtime dependencies are present
-5. Add only the minimal Electron runtime scaffold required by the consuming role bundle
-6. Keep update, packaging, and signing settings explicit rather than implied by Electron adoption
-7. Run the repository's standard validation commands
+1. Read `principles/runtime/electron.md`
+2. Read `profiles/runtime/electron.md`
+3. Verify the repository is intended to run as an Electron application
+4. Inspect Electron runtime state as `present`, `missing`, or `drifted`
+5. Run `.claude/scripts/bootstrap-electron.sh [TARGET_REPO_PATH]` only when required runtime files, dependencies, or CI workflow are missing or safely drifted
+6. Apply the required tool modules listed above and collect their reported status
+7. Ensure `.github/workflows/validate-pr.yml` exists and emits the `validate-electron` check on pull requests to `dev`
+8. Ensure the validation workflow runs `typecheck`, `lint`, `test`, `build`, and optional `ui-check`
+9. Reconcile GitHub repository policy for this runtime when safe:
+   - ensure the repository is PR-based
+   - ensure repo auto-merge is enabled
+   - ensure `dev` branch protection requires the `validate-electron` check
+10. Report `auto_merge_ready` only when the workflow files and GitHub policy are aligned
+11. Add only the minimal Electron runtime scaffold required by repositories adopting this runtime
+12. Keep update, packaging, and signing settings explicit rather than implied by Electron adoption
+13. Run the repository's standard validation commands
 
-## Composes With
+## Applies To
 
-- `setup-role-electron`
+- repositories adopting the Electron runtime
 
 ## Constraints
 

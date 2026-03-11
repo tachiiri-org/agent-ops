@@ -8,6 +8,7 @@ set -euo pipefail
 TARGET="${1:-$PWD}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CLAUDE_OPS_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+WORKFLOW_TEMPLATE="$CLAUDE_OPS_ROOT/.claude/templates/electron/validate-pr.yml"
 
 cd "$TARGET"
 
@@ -40,5 +41,10 @@ bun add -D prettier eslint typescript vitest electron electron-builder electron-
 # Step: add agent-ops package
 echo "[bootstrap] adding github:tachiiri-org/agent-ops"
 bun add github:tachiiri-org/agent-ops
+
+# Step: ensure validation workflow
+echo "[bootstrap] ensuring validation workflow"
+mkdir -p .github/workflows
+cp "$WORKFLOW_TEMPLATE" .github/workflows/validate-pr.yml
 
 echo "[bootstrap] done"

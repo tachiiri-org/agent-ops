@@ -1,0 +1,43 @@
+---
+name: setup-runtime-python
+description: Reconcile Python local-engine runtime requirements and delivery automation for repositories that run on Python.
+---
+
+# setup-runtime-python command
+
+## Tool Modules
+
+- Required:
+  - `setup-tool-uv`
+  - `setup-tool-ruff`
+  - `setup-tool-pyright`
+  - `setup-tool-pytest`
+
+## Workflow
+
+1. Read `principles/runtime/python.md`
+2. Read `profiles/runtime/python.md`
+3. Verify the repository is intended to run as a Python local engine
+4. Inspect Python runtime state as `present`, `missing`, or `drifted`
+5. Run `.claude/scripts/bootstrap-python.sh [TARGET_REPO_PATH]` only when required runtime files, dependencies, or CI workflow are missing or safely drifted
+6. Apply the required tool modules listed above and collect their reported status
+7. Ensure `.github/workflows/validate-pr.yml` exists and emits the `validate-python` check on pull requests to `dev`
+8. Ensure the validation workflow runs Ruff format check, Ruff lint, `pyright`, and `pytest`
+9. Reconcile GitHub repository policy for this runtime when safe:
+   - ensure the repository is PR-based
+   - ensure repo auto-merge is enabled
+   - ensure `dev` branch protection requires the `validate-python` check
+10. Report `auto_merge_ready` only when the workflow files and GitHub policy are aligned
+11. Report any unsafe drift that should not be overwritten automatically
+12. Run the repository's standard validation commands
+
+## Applies To
+
+- repositories adopting the Python runtime
+
+## Constraints
+
+- Do not embed Python-engine business logic into this runtime command
+- Do not treat tool setup as a substitute for runtime-owned merge-gate policy
+- Do not use pip directly; use `uv`
+- Treat this command as an internal setup module that may be called repeatedly

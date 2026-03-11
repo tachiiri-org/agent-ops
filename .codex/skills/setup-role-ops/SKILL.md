@@ -1,6 +1,6 @@
 ---
 name: setup-role-ops
-description: Reconcile an ops repository to the expected shared-guidance and automation baseline.
+description: Reconcile an ops repository to the expected shared-guidance baseline.
 ---
 
 # setup-role-ops command
@@ -21,19 +21,13 @@ description: Reconcile an ops repository to the expected shared-guidance and aut
    - shared guidance roots such as `AGENTS.md`, `CLAUDE.md`, `architecture.mmd`, `principles/`, and `profiles/`
    - mirrored Claude commands and Codex skills for the shared workflows the repository owns
    - `.claude/settings.json` and command definitions required for the shared automation surface
-   - release and deploy workflow definitions owned by the ops repository
-12. Reconcile GitHub repository policy for this role when safe:
-   - ensure the repository is PR-based
-   - ensure `dev` is protected for CI-gated auto-merge
-   - ensure required checks include `Validate Shared Ops / validate-shared-ops`
-   - ensure auto-merge is enabled after the ops CI gate passes
-13. Report any unsafe drift that should not be overwritten automatically
-14. Run the repository's standard validation commands
-15. Summarize which areas were already aligned, which were fixed, and which still need human follow-up
+12. Report any unsafe drift that should not be overwritten automatically
+13. Run the repository's standard validation commands
+14. Summarize which role baseline areas were already aligned, which were fixed, and which still need human follow-up
 
 ## Constraints
 
 - Do not mix product-repository scaffold concerns into this role command
-- Do not create provider-specific integration setup here
+- Do not embed runtime, tool, identity, or provider setup here
 - Do not use npm
 - Treat this command as the operator-facing reconcile entrypoint for ops repository setup

@@ -12,8 +12,9 @@ Profiles define concrete technology- or provider-specific constraints that sit b
 
 1. Read `../principles/core.md` first.
 2. Read the role document under `../principles/roles/` that matches the repository role.
-3. Read only the profile documents that apply to the technologies or services in use.
-4. Read repo-local specifications after the relevant principles and profiles.
+3. Read the runtime document under `../principles/runtime/` when the execution or delivery platform is known.
+4. Read only the profile documents that apply to the technologies or services in use.
+5. Read repo-local specifications after the relevant principles and profiles.
 
 ## Profile Axes
 

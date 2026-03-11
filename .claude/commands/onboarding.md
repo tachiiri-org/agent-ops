@@ -41,8 +41,16 @@
    - Read `profiles/identity/auth0.md` only when the repository directly terminates, exchanges, refreshes, initiates, or validates Auth0-issued credentials.
    - Read matching files under `profiles/providers/` only when the repository directly integrates with those providers, typically at the adapter boundary.
    - Do not infer identity or provider profiles from architecture alone.
-16. Create a feature branch off up-to-date `dev` based on stated goals (e.g. feature/xxx, fix/xxx)
-17. Execute the implement skill matching the repo role:
+16. If the stated goal is repository bootstrap, standards alignment, or setup drift correction, execute the matching `setup-role-*` skill instead of an implement skill:
+   - front → `setup-role-front`
+   - bff → `setup-role-bff`
+   - gateway → `setup-role-gateway`
+   - adapter → `setup-role-adapter`
+   - electron → `setup-role-electron`
+   - python → `setup-role-python`
+   - ops → `setup-role-ops`
+17. Otherwise, create a feature branch off up-to-date `dev` based on stated goals (e.g. feature/xxx, fix/xxx)
+18. Otherwise, execute the implement skill matching the repo role:
    - front / bff / gateway / adapter → `implement-ts`
    - electron → `implement-electron`
    - python → `implement-py`

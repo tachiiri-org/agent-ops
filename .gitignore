@@ -11,6 +11,11 @@
 !/architecture.mmd
 !/install.sh
 !/package.template.json
+!/.github/
+!/.github/workflows/
+!/.github/workflows/*.yml
+!/tooling/
+!/tooling/*.json
 !/profiles/
 !/profiles/*.md
 !/profiles/runtime/
@@ -40,10 +45,14 @@
 /.claude/templates/*
 !/.claude/templates/cloudflare/
 /.claude/templates/cloudflare/*
+!/.claude/templates/cloudflare/common/
+!/.claude/templates/cloudflare/release-pr.yml
 !/.claude/templates/cloudflare/pages/
 !/.claude/templates/cloudflare/workers/
+/.claude/templates/cloudflare/common/*
 /.claude/templates/cloudflare/pages/*
 /.claude/templates/cloudflare/workers/*
+!/.claude/templates/cloudflare/common/*
 !/.claude/templates/cloudflare/pages/*
 !/.claude/templates/cloudflare/workers/*
 

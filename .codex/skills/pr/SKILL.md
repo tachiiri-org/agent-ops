@@ -1,6 +1,6 @@
 ---
 name: pr
-description: Prepare branch, commit, push, open a PR to dev, and report the expected staging URL for Cloudflare runtime repositories.
+description: Prepare branch, commit, push, open a PR to dev, and describe the CI-driven merge gates for roles that adopt auto-merge.
 ---
 
 # pr command
@@ -16,12 +16,15 @@ description: Prepare branch, commit, push, open a PR to dev, and report the expe
 7. Commit with detailed change description
 8. Push branch to remote
 9. Create PR targeting `dev` and output the URL
-10. If the project is a Cloudflare Pages or Workers repository, output the staging URL that CI is expected to deploy after merge to `dev`; make it explicit that deployment has not completed yet
+10. If the project adopts auto-merge for `feature` to `dev`, state which role-defined required checks will gate that auto-merge
+11. If the project is a Cloudflare Pages or Workers repository, state that CI will publish a preview URL on the PR before auto-merge completes
+12. If the project is a Cloudflare Pages or Workers repository, output the staging URL that CI is expected to deploy after merge to `dev`; make it explicit that deployment has not completed yet
 
 ## Constraints
 
 - don't commit with no `.gitignore`
 - don't push to main branch directly
 - don't push to dev branch directly
-- don't run staging deploys from `pr`; Cloudflare staging deploys happen from CI on `push` to `dev`
+- don't run preview or staging deploys from `pr`; CI handles them for the roles that adopt those gates
+- don't merge the PR directly from `pr`; auto-merge may complete later after required checks pass
 - don't present the staging URL as already deployed when `pr` finishes

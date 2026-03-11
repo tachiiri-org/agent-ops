@@ -3,10 +3,15 @@
 ## Workflow
 
 1. Verify the repository is intended to use ESLint
-2. Ensure `eslint` configuration exists
-3. Ensure repository scripts expose lint execution consistently
-4. Keep lint scope aligned with the repository language surface
+2. Inspect ESLint setup as `present`, `missing`, or `drifted`
+3. Read `tooling/recommended-versions.json` for the stored TypeScript baseline when reconciling package versions
+4. Ensure `eslint` configuration exists
+5. Ensure repository scripts expose lint execution consistently
+6. Keep lint scope aligned with the repository language surface
+7. Report the final ESLint setup status so the consuming role command can summarize reconciliation
 
 ## Constraints
 
 - Do not encode runtime or provider policy into generic lint setup
+- Treat this command as an internal setup module that may be called repeatedly
+- Reconcile to the stored baseline; do not query live latest versions during ordinary setup

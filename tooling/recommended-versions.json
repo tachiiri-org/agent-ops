@@ -1,0 +1,12 @@
+{
+  "typescript": {
+    "@playwright/test": "^1.58.2",
+    "eslint": "^10.0.2",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  },
+  "cloudflare": {
+    "wrangler": "^4.69.0"
+  }
+}

@@ -4,26 +4,7 @@ Project guidance for automated coding agents.
 
 ## Defaults
 
-### TypeScript
-
-- Use bun for package management.
-- Use Prettier for formatting.
-- Use ESLint for linting.
-- Use Vitest for unit tests.
-- Use tsc for type checking.
-- Use Playwright for UI checks when UI changes.
-- Use Cloudflare Pages for frontend.
-- Use Cloudflare Workers for BFF, gateway, and adapter.
-
-### Python
-
-- Use uv for package management.
-- Use ruff for formatting and linting.
-- Use pyright for type checking.
-- Use pytest for testing.
-
-### Common
-
+- Follow `/home/tachiiri/.guide/tools.md` for tool selection and recommended versions.
 - Prefer delegation workflows (plan first, then implement).
 - Use Japanese for user-facing conversation.
 - Use English for documentation and code reading/writing.

@@ -7,6 +7,12 @@ description: Reconcile Electron runtime requirements and delivery automation for
 
 Shared guidance reads in this workflow refer to files under `/home/tachiiri/.guide/`.
 
+## Goal
+
+- Reconcile the repository to the Electron runtime baseline defined by shared guidance.
+- Use `/home/tachiiri/.guide/tools.md` as the authority for required TypeScript tooling.
+- Reach a state where the required runtime files, validation workflow, and Electron tool surface are present without relying on bootstrap scripts.
+
 ## Tool Modules
 
 - Required:
@@ -24,10 +30,10 @@ Shared guidance reads in this workflow refer to files under `/home/tachiiri/.gui
 2. Read `profiles/runtime/electron.md`
 3. Verify the repository is intended to run as an Electron application
 4. Inspect Electron runtime state as `present`, `missing`, or `drifted`
-5. Run `.claude/scripts/bootstrap-electron.sh [TARGET_REPO_PATH]` only when required runtime files, dependencies, or CI workflow are missing or safely drifted
+5. Reconcile required runtime files directly from the tracked templates when files or workflows are missing or safely drifted
 6. Apply the required tool modules listed above and collect their reported status
 7. Ensure `.github/workflows/validate-pr.yml` exists and emits the `validate-electron` check on pull requests to `dev`
-8. Ensure the validation workflow runs `typecheck`, `lint`, `test`, `build`, and optional `ui-check`
+8. Ensure the validation workflow runs the Electron validation surface selected by shared guidance
 9. Reconcile GitHub repository policy for this runtime when safe:
    - ensure the repository is PR-based
    - ensure repo auto-merge is enabled
@@ -46,3 +52,4 @@ Shared guidance reads in this workflow refer to files under `/home/tachiiri/.gui
 - Do not embed application-specific behavior into this runtime command
 - Do not imply provider or update-channel choices by runtime setup alone
 - Do not use npm
+- Do not rely on bootstrap scripts; reconcile from `tools.md` and tracked templates directly

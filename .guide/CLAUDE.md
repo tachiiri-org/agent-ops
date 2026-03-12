@@ -8,30 +8,9 @@ This document defines Claude's behavioral constraints in this repository.
 - Do not include explanations.
 - Do not introduce exceptions unless explicitly instructed.
 
-## Tools Default
+## Defaults
 
-### TypeScript
-
-- Use bun for package management.
-- Use Prettier for formatting.
-- Use ESLint for linting.
-- Use Vitest for testing.
-- Use tsc for type checking.
-- Use Playwright to check UI.
-- Use Cloudflare Pages for frontend.
-- Use Cloudflare Workers for bff, gateway, and adapter.
-
-### Python
-
-- Use uv for package management.
-- Use ruff for formatting and linting.
-- Use pyright for type checking.
-- Use pytest for testing.
-
-### Common
-
-- Use Serena via MCP to read and locate code.
-- Use GitHub for version control.
+- Follow `/home/tachiiri/.guide/tools.md` for tool selection and recommended versions.
 - Use Japanese for user-facing conversation.
 - Use English for documentation and code reading/writing.
 

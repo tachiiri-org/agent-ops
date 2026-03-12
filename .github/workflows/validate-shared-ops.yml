@@ -45,12 +45,44 @@ jobs:
               Path(".claude/settings.json"),
               Path(".mcp.json"),
               Path("package.template.json"),
-              Path(".guide/recommended-versions.json"),
           ]
 
           for path in paths:
               json.loads(path.read_text())
               print(path)
+          PY
+
+      - name: Validate tools guidance
+        run: |
+          python - <<'PY'
+          import re
+          from pathlib import Path
+
+          text = Path(".guide/tools.md").read_text()
+
+          required_lines = [
+              r"^- code_navigation: Serena$",
+              r"^- version_control: GitHub$",
+              r"^- language: TypeScript `5\.9\.3`$",
+              r"^- package_manager: bun `1\.3\.10`$",
+              r"^- formatter: Prettier `\^3\.8\.1`$",
+              r"^- linter: ESLint `\^10\.0\.3`$",
+              r"^- typecheck: TypeScript `\^5\.9\.3`$",
+              r"^- unit_test: Vitest `\^4\.0\.18`$",
+              r"^- ui_test: Playwright `\^1\.58\.2`$",
+              r"^- language: Python `3\.14\.3`$",
+              r"^- package_manager: uv `0\.10\.9`$",
+              r"^- formatter_and_linter: Ruff `0\.15\.5`$",
+              r"^- typecheck: Pyright `1\.1\.408`$",
+              r"^- test: pytest `9\.0\.2`$",
+              r"^- deploy_cli: Wrangler `\^4\.72\.0`$",
+          ]
+
+          for pattern in required_lines:
+              if not re.search(pattern, text, re.MULTILINE):
+                  raise SystemExit(f"tools.md missing expected line: {pattern}")
+
+          print(".guide/tools.md")
           PY
 
       - name: Validate YAML files
@@ -95,16 +127,31 @@ jobs:
               )
           PY
 
-      - name: Validate recommended versions sync
+      - name: Validate tool version sync
         run: |
           python - <<'PY'
           import json
+          import re
           from pathlib import Path
 
           package = json.loads(Path("package.template.json").read_text())
-          versions = json.loads(Path(".guide/recommended-versions.json").read_text())
+          tools = Path(".guide/tools.md").read_text()
 
-          expected = versions["typescript"]
+          patterns = {
+              "@playwright/test": r"^- ui_test: Playwright `([^`]+)`$",
+              "eslint": r"^- linter: ESLint `([^`]+)`$",
+              "prettier": r"^- formatter: Prettier `([^`]+)`$",
+              "typescript": r"^- typecheck: TypeScript `([^`]+)`$",
+              "vitest": r"^- unit_test: Vitest `([^`]+)`$",
+          }
+
+          expected = {}
+          for name, pattern in patterns.items():
+              match = re.search(pattern, tools, re.MULTILINE)
+              if not match:
+                  raise SystemExit(f"tools.md is missing {name}")
+              expected[name] = match.group(1)
+
           actual = package["devDependencies"]
 
           missing = {

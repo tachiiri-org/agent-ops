@@ -11,23 +11,24 @@ Python local-engine runtime profile for repositories and services that run local
 ## Applies When
 
 - A repository role runs as a local Python engine.
-- A repository uses `uv`, `ruff`, `pyright`, and `pytest` as its standard validation surface.
+- A repository adopts the Python toolchain defined in `../../tools.md`.
 
 ## Baseline
 
 - Keep role responsibilities in `../../principles/roles/python.md`.
 - Keep runtime-owned delivery policy in `../../principles/runtime/python.md`.
+- Keep shared tool selection and recommended versions in `../../tools.md`.
 - Use this profile only for Python-runtime-specific concrete constraints.
 
 ## Runtime Constraints
 
 - Keep Python execution local-service style rather than browser- or network-edge style.
-- Keep virtual-environment management explicit through `uv`.
+- Keep virtual-environment management explicit through the selected Python package-management tool.
 - Keep entrypoints, package layout, and tool configuration explicit rather than inferred from incidental file layout.
 
 ## Delivery Constraints
 
-- Keep the validation workflow responsible for Ruff format check, Ruff lint, `pyright`, and `pytest`.
+- Keep the validation workflow responsible for the Python validation surface defined in `../../tools.md`.
 - Keep `dev` merge-gate policy aligned with the runtime-owned `validate-python` check.
 - Do not treat ad hoc local execution as the repository's authoritative validation surface.
 

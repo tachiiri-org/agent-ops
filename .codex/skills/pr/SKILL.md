@@ -42,7 +42,10 @@ Shared guidance reads in this workflow refer to files under `/home/tachiiri/.gui
 18. If the project is a Cloudflare Pages or Workers repository, state that CI will publish a preview URL on the PR before auto-merge completes
 19. If the project is a Cloudflare Pages or Workers repository, output the staging URL that CI is expected to deploy after merge to `dev`; make it explicit that deployment has not completed yet until merge has actually completed
 20. If the project is not a Cloudflare runtime repository, state that `pr` does not publish runtime artifacts by itself unless the runtime-specific merge flow explicitly does so
-21. Finish only when one of the following is true:
+21. After the PR has merged, delete the remote feature branch if it still exists
+22. After the PR has merged, switch away from the merged local feature branch to `dev` when needed
+23. After switching away, delete the merged local feature branch
+24. Finish only when one of the following is true:
    - the PR has merged
    - the PR is blocked by a non-repairable external condition that has been reported with evidence
 
@@ -56,5 +59,8 @@ Shared guidance reads in this workflow refer to files under `/home/tachiiri/.gui
 - for Cloudflare runtimes, treat `pr` as the normal delivery path to `dev`
 - don't disable manual review or branch-protection requirements
 - don't present the staging URL as already deployed before merge has completed
+- don't delete a branch before the PR has actually merged
+- don't delete a local branch while it is still checked out; switch to `dev` first
+- don't delete a branch that still has unmerged commits relative to `dev`
 - do bounded waiting and bounded self-repair; if the same failure repeats without progress, stop and report it
 - only self-repair repository-local failures that are safe and within the current task scope

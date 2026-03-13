@@ -55,34 +55,28 @@ jobs:
       - name: Validate tools guidance
         run: |
           python - <<'PY'
-          import re
           from pathlib import Path
 
-          text = Path(".guide/tools.md").read_text()
+          expected = {
+              Path(".guide/languages/typescript.md"): "- TypeScript `5.9.3`",
+              Path(".guide/tools/bun.md"): "- Bun `1.3.10`",
+              Path(".guide/tools/prettier.md"): "- Prettier `^3.8.1`",
+              Path(".guide/tools/eslint.md"): "- ESLint `^10.0.3`",
+              Path(".guide/tools/vitest.md"): "- Vitest `^4.0.18`",
+              Path(".guide/tools/playwright.md"): "- Playwright `^1.58.2`",
+              Path(".guide/languages/python.md"): "- Python `3.14.3`",
+              Path(".guide/tools/uv.md"): "- uv `0.10.9`",
+              Path(".guide/tools/ruff.md"): "- Ruff `0.15.5`",
+              Path(".guide/tools/pyright.md"): "- Pyright `1.1.408`",
+              Path(".guide/tools/pytest.md"): "- pytest `9.0.2`",
+              Path(".guide/tools/wrangler.md"): "- Wrangler `^4.72.0`",
+          }
 
-          required_lines = [
-              r"^- code_navigation: Serena$",
-              r"^- version_control: GitHub$",
-              r"^- language: TypeScript `5\.9\.3`$",
-              r"^- package_manager: bun `1\.3\.10`$",
-              r"^- formatter: Prettier `\^3\.8\.1`$",
-              r"^- linter: ESLint `\^10\.0\.3`$",
-              r"^- typecheck: TypeScript `\^5\.9\.3`$",
-              r"^- unit_test: Vitest `\^4\.0\.18`$",
-              r"^- ui_test: Playwright `\^1\.58\.2`$",
-              r"^- language: Python `3\.14\.3`$",
-              r"^- package_manager: uv `0\.10\.9`$",
-              r"^- formatter_and_linter: Ruff `0\.15\.5`$",
-              r"^- typecheck: Pyright `1\.1\.408`$",
-              r"^- test: pytest `9\.0\.2`$",
-              r"^- deploy_cli: Wrangler `\^4\.72\.0`$",
-          ]
-
-          for pattern in required_lines:
-              if not re.search(pattern, text, re.MULTILINE):
-                  raise SystemExit(f"tools.md missing expected line: {pattern}")
-
-          print(".guide/tools.md")
+          for path, expected_line in expected.items():
+              text = path.read_text()
+              if expected_line not in text:
+                  raise SystemExit(f"{path} is missing expected line: {expected_line}")
+              print(path)
           PY
 
       - name: Validate YAML files
@@ -131,32 +125,31 @@ jobs:
         run: |
           python - <<'PY'
           import json
-          import re
           from pathlib import Path
 
           package = json.loads(Path("package.template.json").read_text())
-          tools = Path(".guide/tools.md").read_text()
-
-          patterns = {
-              "@playwright/test": r"^- ui_test: Playwright `([^`]+)`$",
-              "eslint": r"^- linter: ESLint `([^`]+)`$",
-              "prettier": r"^- formatter: Prettier `([^`]+)`$",
-              "typescript": r"^- typecheck: TypeScript `([^`]+)`$",
-              "vitest": r"^- unit_test: Vitest `([^`]+)`$",
+          expected = {
+              "@playwright/test": (Path(".guide/tools/playwright.md"), "- Playwright `"),
+              "eslint": (Path(".guide/tools/eslint.md"), "- ESLint `"),
+              "prettier": (Path(".guide/tools/prettier.md"), "- Prettier `"),
+              "typescript": (Path(".guide/languages/typescript.md"), "- TypeScript `"),
+              "vitest": (Path(".guide/tools/vitest.md"), "- Vitest `"),
           }
 
-          expected = {}
-          for name, pattern in patterns.items():
-              match = re.search(pattern, tools, re.MULTILINE)
-              if not match:
-                  raise SystemExit(f"tools.md is missing {name}")
-              expected[name] = match.group(1)
+          versions = {}
+          for name, (path, prefix) in expected.items():
+              for line in path.read_text().splitlines():
+                  if line.startswith(prefix):
+                      versions[name] = line.removeprefix(prefix).removesuffix("`")
+                      break
+              else:
+                  raise SystemExit(f"{path} is missing {name}")
 
           actual = package["devDependencies"]
 
           missing = {
               name: version
-              for name, version in expected.items()
+              for name, version in versions.items()
               if actual.get(name) != version
           }
 

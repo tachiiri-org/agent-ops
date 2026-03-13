@@ -1,21 +1,27 @@
 # adapter.md
 
-- One adapter per external service provider.
+## Roles
+
+- Own one adapter per external service provider.
 - Absorb provider-specific API differences.
 - Own the final authorization decision at the execution boundary.
 - Apply provider-specific rate limiting.
-- Handle retry, backoff, and circuit breaking.
+- Handle retry.
+- Handle backoff.
+- Handle circuit breaking.
 - Normalize external data into gateway-facing canonical form.
 - Complete idempotency at the execution boundary.
-- Enforce final record-level ownership and tenant containment checks.
-- Keep provider-specific transport and error details from leaking upstream.
-- Verify webhook signatures, replay protection, and duplicate-delivery handling where applicable.
-- Keep billing-grade and secret-bearing provider data out of logs and unsafe persistence.
-- Emit decision-trace and audit-friendly context for execution-boundary outcomes.
-- Keep issuer verification, key rotation overlap, and final policy decisions explicit at the execution boundary.
-- Keep support and break-glass operations tenant-scoped, strongly audited, and revocable.
-- Complete dedupe and exactly-once-effect safeguards for async deliveries at the execution boundary.
+- Enforce final record-level ownership checks.
+- Enforce tenant containment checks.
+
+## Constraints
+
+- Keep provider-specific transport details from leaking upstream.
+- Keep provider-specific error details from leaking upstream.
+- Verify webhook signatures when applicable.
+- Verify replay protection when applicable.
+- Verify duplicate-delivery handling when applicable.
+- Keep execution-boundary outcomes explicit.
 - Do not rely on expanded claims sets instead of data-bound ownership checks.
-- Canonicalize provider-specific event and lifecycle semantics before they cross upstream boundaries.
-- Keep reconciliation, dispute, refund, reversal, and settlement workflows explicit at the adapter boundary when a provider exposes them.
-- Keep payment or other secret-bearing provider tokens as tokenized references rather than ordinary persisted values.
+- Canonicalize provider-specific event semantics before they cross upstream boundaries.
+- Canonicalize provider-specific lifecycle semantics before they cross upstream boundaries.

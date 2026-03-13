@@ -26,7 +26,7 @@ Shared guidance reads in this workflow refer to files under `/home/tachiiri/.gui
 
 ## Workflow
 
-1. Read `services/cloudflare-pages.md`
+1. Read `runtimes/cloudflare-pages.md`
 3. Verify the repository is intended to run on Cloudflare Pages
 4. Inspect Pages runtime state as `present`, `missing`, or `drifted`
 5. Read `/home/tachiiri/.guide/tools/wrangler.md` for the stored `Wrangler` baseline when reconciling runtime dependencies
@@ -48,6 +48,23 @@ Shared guidance reads in this workflow refer to files under `/home/tachiiri/.gui
 18. Report the final runtime setup status so operators can summarize reconciliation across runtime and role steps
 19. Keep Pages features and bindings explicit rather than implied by Pages adoption
 20. Run the repository's standard validation commands
+
+## Runtime-owned Decisions
+
+- Keep preview deployment, staging deployment, and release-PR maintenance explicit in this runtime module.
+- Keep the required `dev` merge gate anchored on the runtime-owned preview workflow.
+- Keep Cloudflare secret prerequisites explicit and runtime-owned.
+- Use `bun run deploy:staging` as the normal staging deployment entrypoint.
+- Do not deploy production with Wrangler directly.
+
+## Repo-local Required Decisions
+
+- selected Pages features and bindings
+- cache behavior by route class
+- preview and production environment behavior
+- frontend telemetry configuration
+- API origin and BFF integration configuration
+- the critical runtime configuration that must fail closed when absent
 
 ## Applies To
 

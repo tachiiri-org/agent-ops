@@ -1,19 +1,21 @@
 # front.md
 
-- Frontend is presentation only.
-- No business logic in UI.
+## Roles
+
+- Keep the frontend presentation only.
 - Use composition patterns only.
-- Explicitly model loading and error states.
-- Keep components stateless by default.
-- Interact with domain only via BFF contracts.
-- Accessibility is mandatory.
+- Model loading states explicitly.
+- Model error states explicitly.
+- Interact with the domain only through BFF contracts.
+- Keep accessibility mandatory.
 - Lazy-load non-critical UI.
 - Wrap app routes with an ErrorBoundary.
+
+## Constraints
+
+- Keep business logic out of the UI.
+- Keep components stateless by default.
 - Avoid global state unless strictly necessary.
 - Treat BFF contracts as the only network-facing authority for UI behavior.
-- Do not establish identity in the frontend; browser identity is established at the BFF boundary.
-- Do not emit or mutate browser session cookies.
-- Do not infer authorization or tenancy from client-local state alone.
-- Do not treat UI routes as authorization or step-up policy boundaries.
-- Do not trust browser-visible identity fields as authorization truth.
-- Do not weaken browser response-header posture through ad hoc page-level exceptions.
+- Do not infer authorization from client-local state alone.
+- Do not infer tenancy from client-local state alone.

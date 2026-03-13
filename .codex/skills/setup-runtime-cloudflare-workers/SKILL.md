@@ -30,7 +30,7 @@ Shared guidance reads in this workflow refer to files under `/home/tachiiri/.gui
 
 ## Workflow
 
-1. Read `services/cloudflare-workers.md`
+1. Read `runtimes/cloudflare-workers.md`
 3. Verify the repository is intended to run on Cloudflare Workers
 4. Inspect Workers runtime state as `present`, `missing`, or `drifted`
 5. Read `/home/tachiiri/.guide/tools/wrangler.md` for the stored `Wrangler` baseline when reconciling runtime dependencies
@@ -52,6 +52,24 @@ Shared guidance reads in this workflow refer to files under `/home/tachiiri/.gui
 18. Report the final runtime setup status so operators can summarize reconciliation across runtime and role steps
 19. Keep Cloudflare-native service selection explicit rather than implied by Workers adoption
 20. Run the repository's standard validation commands
+
+## Runtime-owned Decisions
+
+- Keep preview deployment, staging deployment, and release-PR maintenance explicit in this runtime module.
+- Keep the required `dev` merge gate anchored on the runtime-owned preview workflow.
+- Keep Cloudflare secret prerequisites explicit and runtime-owned.
+- Use `bun run deploy:staging` as the normal staging deployment entrypoint.
+- Do not deploy production with Wrangler directly.
+
+## Repo-local Required Decisions
+
+- selected Cloudflare-native services
+- environment bindings
+- storage and queue mappings
+- observability export and retention configuration
+- deployment topology and routing composition
+- provider event and async-delivery semantics when queues, workflows, scheduled triggers, or webhooks are used
+- the critical bindings and verification material that must fail closed when absent
 
 ## Applies To
 

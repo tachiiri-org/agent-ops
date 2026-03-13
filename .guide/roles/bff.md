@@ -1,23 +1,28 @@
 # bff.md
 
-- One BFF per channel (pages, cli, api, mcp, etc.).
-- Aggregate and transform data for the channel; adapter and gateway do not transform.
-- Complete authentication at BFF; pass normalized principal to gateway.
-- Apply channel-specific visibility control and early rejection.
+## Roles
+
+- Own one BFF per channel.
+- Aggregate data for the channel.
+- Transform data for the channel.
+- Complete authentication at the BFF boundary.
+- Pass normalized principal context to the gateway.
+- Apply channel-specific visibility control.
+- Apply early rejection for the channel.
+
+## Constraints
+
 - Do not rely on BFF permission decisions as authorization ground truth.
-- BFF controls what is shown and passed; gateway controls what is allowed.
-- Establish browser identity only at the BFF boundary.
-- Prefer `authorization_code` with PKCE for browser interactive login.
-- Terminate browser login into a first-party BFF-managed session rather than forwarding browser bearer tokens downstream.
-- Issue browser session and CSRF cookies only from the BFF.
-- Reject browser-originated `authorization` headers and pseudo-identity headers.
-- Forward only verified principal context, operation identity, and idempotency context.
-- Require a normalized verified claims shape before forwarding identity downstream.
-- Validate and forward idempotency keys for side-effecting operations; do not complete idempotency.
+- Let the BFF control what is shown.
+- Let the BFF control what is passed downstream.
+- Let the gateway control what is allowed.
+- Forward only verified principal context.
+- Forward only operation identity.
+- Forward only idempotency context.
+- Validate idempotency keys for side-effecting operations.
+- Forward idempotency keys for side-effecting operations.
+- Do not complete idempotency.
 - Preserve explicit contract-version behavior on internal boundaries.
-- Keep browser-specific concerns at the BFF edge and out of gateway or adapter contracts.
-- Do not inject delegation or impersonation context through ad hoc headers or body fields.
-- Do not forward browser cookies downstream.
-- Keep step-up and assurance state in verified browser context rather than downstream claims.
-- Generate or overwrite request identifiers at the first browser trust boundary rather than trusting browser input.
-- Keep browser response security-header baselines explicit and exception-driven.
+- Keep browser-specific concerns at the BFF edge.
+- Keep browser-specific concerns out of gateway contracts.
+- Keep browser-specific concerns out of adapter contracts.

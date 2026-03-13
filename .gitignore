@@ -23,8 +23,8 @@
 !/.guide/roles/*.md
 !/.guide/hosts/
 !/.guide/hosts/*.md
-!/.guide/services/
-!/.guide/services/*.md
+!/.guide/runtimes/
+!/.guide/runtimes/*.md
 !/.guide/languages/
 !/.guide/languages/*.md
 !/.guide/tools/

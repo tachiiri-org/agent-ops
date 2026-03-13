@@ -15,7 +15,7 @@ TypeScript tool profile for repositories that use TypeScript as an implementatio
 
 ## Version Baseline
 
-- TypeScript `5.9.3`
+- TypeScript `^5.9.3`
 
 ## Baseline
 

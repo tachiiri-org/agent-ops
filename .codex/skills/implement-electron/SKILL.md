@@ -27,8 +27,8 @@ description: Plan and implement Electron changes with formatting, typecheck, lin
 ## Constraints
 
 - treat onboarding context as required input
-- require `profiles/runtime/electron.md` when the repository adopts the Electron runtime profile
-- require `profiles/identity/auth0.md` when the repository directly integrates with Auth0
+- require `services/electron.md` when the repository adopts the Electron service profile
+- require `providers/auth0.md` when the repository directly integrates with Auth0
 - if onboarding context is missing, recover the minimum role, domain, and profile context before changing code
 - use tests-first by default for behavioral changes
 - if the change is purely mechanical and behavior-preserving, tests-first is optional but validation is still required

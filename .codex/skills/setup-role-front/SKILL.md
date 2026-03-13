@@ -10,9 +10,8 @@ Shared guidance reads in this workflow refer to files under `/home/tachiiri/.gui
 ## Workflow
 
 1. Read `CLAUDE.md`
-2. Read `principles/core.md`
-3. Read `profiles/core.md`
-4. Read `principles/roles/front.md`
+2. Read `domains/foundations.md`
+3. Read `principles/roles/front.md`
 5. Verify the target directory exists locally
 6. Verify working tree is clean before reconciliation
 7. Verify Codex and Serena availability

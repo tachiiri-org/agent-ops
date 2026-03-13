@@ -9,9 +9,8 @@
 ## Workflow
 
 1. Read `CLAUDE.md`
-2. Read `principles/core.md`
-3. Read `profiles/core.md`
-4. Read `principles/roles/bff.md`
+2. Read `domains/foundations.md`
+3. Read `principles/roles/bff.md`
 5. Verify the target directory exists locally
 6. Verify working tree is clean before reconciliation
 7. Verify Codex and Serena availability

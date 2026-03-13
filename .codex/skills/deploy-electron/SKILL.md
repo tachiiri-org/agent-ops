@@ -11,8 +11,8 @@ Shared guidance reads in this workflow refer to files under `/home/tachiiri/.gui
 
 1. Read `principles/domains/ops-governance.md`
 2. Read `principles/domains/compatibility-and-change.md`
-3. Read `principles/roles/electron.md`
-4. Read `profiles/runtime/electron.md`
+3. Read `roles/desktop-app.md`
+4. Read `services/electron.md`
 5. Verify GitHub auth: `gh auth status`
 6. Read version from `package.json`
 7. Ensure release tag does not already exist:

@@ -8,7 +8,7 @@ SOT is at `/home/tachiiri`.
 - `AGENTS.md`: project-wide agent defaults and constraints
 - `CLAUDE.md`: behavioral constraints for this repository
 - `architecture.mmd`: system topology
-- `tools.md`: default tools and version
+- `tools/`: tool profiles and per-tool version baselines
 
 ## Goal
 

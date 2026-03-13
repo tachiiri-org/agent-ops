@@ -2,8 +2,7 @@
 
 ## Workflow
 
-1. Read `principles/runtime/ops.md`
-2. Read `profiles/runtime/ops.md`
+1. Read `roles/ops.md`
 3. Verify the repository is intended to act as an ops or shared-guidance repository
 4. Inspect ops runtime state as `present`, `missing`, or `drifted`
 5. Ensure `.github/workflows/validate-shared-ops.yml` exists and emits the `validate-shared-ops` check

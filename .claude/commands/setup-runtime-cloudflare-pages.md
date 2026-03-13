@@ -3,7 +3,7 @@
 ## Goal
 
 - Reconcile the repository to the Cloudflare Pages runtime baseline defined by shared guidance.
-- Use `/home/tachiiri/.guide/tools.md` as the authority for required runtime tooling and recommended versions.
+- Use the matching files under `/home/tachiiri/.guide/tools/` as the authority for required runtime tooling and `/home/tachiiri/.guide/tools/wrangler.md` for the Wrangler version baseline.
 - Reach a state where the required Pages files, scripts, workflows, and tool versions are present without relying on bootstrap scripts.
 
 ## Tool Modules
@@ -19,14 +19,13 @@
 
 ## Workflow
 
-1. Read `principles/runtime/cloudflare-pages.md`
-2. Read `profiles/runtime/cloudflare-pages.md`
+1. Read `services/cloudflare-pages.md`
 3. Verify the repository is intended to run on Cloudflare Pages
 4. Inspect Pages runtime state as `present`, `missing`, or `drifted`
-5. Read `/home/tachiiri/.guide/tools.md` for the stored `Wrangler` baseline when reconciling runtime dependencies
+5. Read `/home/tachiiri/.guide/tools/wrangler.md` for the stored `Wrangler` baseline when reconciling runtime dependencies
 6. Reconcile required runtime files directly from the tracked templates when files or scripts are missing or drifted
 7. Apply the required tool modules listed above and collect their reported status
-8. Ensure `package.json` includes the `wrangler` version selected in `/home/tachiiri/.guide/tools.md`
+8. Ensure `package.json` includes the `wrangler` version selected in `/home/tachiiri/.guide/tools/wrangler.md`
 9. Ensure `package.json` exposes `bun run deploy:preview` and `bun run deploy:staging` for Pages preview and staging deploys
 10. Ensure `scripts/deploy-preview.sh` and `scripts/deploy-staging.sh` exist and own the Pages-specific deploy commands
 11. Ensure `scripts/github/upsert-pr-comment.py` exists for CI URL reporting
@@ -53,5 +52,5 @@
 - Do not imply non-essential Pages features by runtime setup alone
 - Do not move staging deploy execution into the `pr` workflow
 - Do not use npm
-- Do not rely on bootstrap scripts; reconcile from `tools.md` and tracked templates directly
+- Do not rely on bootstrap scripts; reconcile from the relevant files under `tools/` and tracked templates directly
 - Treat this command as an internal setup module that may be called repeatedly

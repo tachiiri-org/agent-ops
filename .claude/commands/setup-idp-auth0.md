@@ -15,12 +15,12 @@
 
 ## Workflow
 
-1. Read `profiles/identity/auth0.md`
+1. Read `providers/auth0.md`
 2. Read `principles/domains/identity-and-access.md`
 3. Read `principles/domains/interaction-edges.md`
 4. Read the role document that matches the repository when relevant:
    - `principles/roles/bff.md`
-   - `principles/roles/electron.md`
+   - `roles/desktop-app.md`
    - `principles/roles/front.md`
    - `principles/roles/gateway.md` when a gateway directly validates Auth0-issued credentials
    - `principles/roles/adapter.md` when an adapter directly validates Auth0-issued credentials
@@ -109,5 +109,5 @@
 - Do not make gateway or adapter repositories Auth0-aware by default
 - Do not bypass BFF as the browser authentication termination point when a BFF exists
 - Do not add provider-specific values into shared `principles/`
-- Do not invent repository-local auth flows that conflict with `profiles/identity/auth0.md`
+- Do not invent repository-local auth flows that conflict with `providers/auth0.md`
 - Do not use npm

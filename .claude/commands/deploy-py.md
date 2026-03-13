@@ -4,7 +4,7 @@
 
 1. Read `principles/domains/ops-governance.md`
 2. Read `principles/domains/compatibility-and-change.md`
-3. Read `principles/roles/python.md`
+3. Read `roles/batch.md`
 4. Verify `wrangler` is available and authenticated (`wrangler whoami`)
 5. Read project `name` and `version` from `pyproject.toml`
 6. Read `public_url` from `[tool.release]` in `pyproject.toml`; stop with instructions if empty

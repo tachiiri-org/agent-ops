@@ -33,6 +33,7 @@
       "Bash(git branch *)",
       "Bash(git ls-files *)",
       "Bash(git push -u origin *)",
+      "Bash(git checkout *)",
       "Bash(git push origin --delete *)",
       "Bash(ls*)",
       "Bash(find *)",
@@ -43,6 +44,7 @@
       "Bash(gh --version)",
       "Bash(gh auth status)",
       "Bash(gh pr *)",
+      "Bash(gh run *)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(npx wrangler dev*)",
       "Bash(npx wrangler whoami)",
@@ -53,7 +55,6 @@
     "ask": [
       
       "Bash(git push *)",
-      "Bash(git checkout *)",
       "Bash(git rebase *)",
       "Bash(git reset *)",
       "Bash(curl *)",

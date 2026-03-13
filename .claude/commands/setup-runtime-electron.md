@@ -3,7 +3,7 @@
 ## Goal
 
 - Reconcile the repository to the Electron runtime baseline defined by shared guidance.
-- Use `/home/tachiiri/.guide/tools.md` as the authority for required TypeScript tooling.
+- Use the matching TypeScript and packaging tool profiles under `/home/tachiiri/.guide/tools/` as the authority for required tooling.
 - Reach a state where the required runtime files, validation workflow, and Electron tool surface are present without relying on bootstrap scripts.
 
 ## Tool Modules
@@ -19,8 +19,7 @@
 
 ## Workflow
 
-1. Read `principles/runtime/electron.md`
-2. Read `profiles/runtime/electron.md`
+1. Read `services/electron.md`
 3. Verify the repository is intended to run as an Electron application
 4. Inspect Electron runtime state as `present`, `missing`, or `drifted`
 5. Reconcile required runtime files directly from the tracked templates when files or workflows are missing or safely drifted
@@ -45,4 +44,4 @@
 - Do not embed application-specific behavior into this runtime command
 - Do not imply provider or update-channel choices by runtime setup alone
 - Do not use npm
-- Do not rely on bootstrap scripts; reconcile from `tools.md` and tracked templates directly
+- Do not rely on bootstrap scripts; reconcile from the relevant files under `tools/` and tracked templates directly

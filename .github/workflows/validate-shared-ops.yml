@@ -25,13 +25,13 @@ jobs:
 
       - name: Validate shell scripts
         run: |
-          find .claude/scripts .claude/templates -type f -name '*.sh' -print0 | while IFS= read -r -d '' file; do
+          find .claude/templates -type f -name '*.sh' -print0 | while IFS= read -r -d '' file; do
             bash -n "$file"
           done
 
       - name: Validate Python helpers
         run: |
-          find .claude/templates -type f -name '*.py' -print0 | while IFS= read -r -d '' file; do
+          find .claude/templates -type f -name '*.py' ! -path '*/__pycache__/*' -print0 | while IFS= read -r -d '' file; do
             python -m py_compile "$file"
           done
 

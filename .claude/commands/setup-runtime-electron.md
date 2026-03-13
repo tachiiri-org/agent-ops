@@ -19,7 +19,7 @@
 
 ## Workflow
 
-1. Read `services/electron.md`
+1. Read `runtimes/electron.md`
 3. Verify the repository is intended to run as an Electron application
 4. Inspect Electron runtime state as `present`, `missing`, or `drifted`
 5. Reconcile required runtime files directly from the tracked templates when files or workflows are missing or safely drifted
@@ -34,6 +34,23 @@
 11. Add only the minimal Electron runtime scaffold required by repositories adopting this runtime
 12. Keep update, packaging, and signing settings explicit rather than implied by Electron adoption
 13. Run the repository's standard validation commands
+
+## Runtime-owned Decisions
+
+- Keep the validation workflow, required check name, and `dev` merge gate explicit in this runtime module.
+- Keep packaging, release-channel, signing, and update-feed posture explicit rather than implied by Electron adoption.
+
+## Repo-local Required Decisions
+
+- IPC surface inventory
+- secure storage mechanism
+- update channel behavior
+- packaging and signing configuration
+- cloud-boundary integration configuration
+- authoritative build toolchain entrypoints
+- branch or environment mapping for prerelease versus production channels
+- update feed and artifact publication configuration
+- the critical secure-storage and trusted-update prerequisites that must fail closed when absent
 
 ## Applies To
 

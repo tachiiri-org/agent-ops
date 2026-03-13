@@ -22,7 +22,7 @@
 ## Constraints
 
 - treat onboarding context as required input
-- require `services/electron.md` when the repository adopts the Electron service profile
+- require `runtimes/electron.md` when the repository adopts the Electron runtime profile
 - require `providers/auth0.md` when the repository directly integrates with Auth0
 - if onboarding context is missing, recover the minimum role, domain, and profile context before changing code
 - use tests-first by default for behavioral changes

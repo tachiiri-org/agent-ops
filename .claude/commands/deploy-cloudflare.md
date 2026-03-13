@@ -9,7 +9,7 @@
 
 1. Read `principles/domains/ops-governance.md`
 2. Read `principles/domains/compatibility-and-change.md`
-3. Read `services/cloudflare-workers.md` for Worker repositories or `services/cloudflare-pages.md` for Pages repositories
+3. Read `runtimes/cloudflare-workers.md` for Worker repositories or `runtimes/cloudflare-pages.md` for Pages repositories
 4. Read the matching role document for the repository role
 5. Confirm this is an explicit manual staging verification request rather than ordinary `feature` -> `dev` delivery
 6. State that the normal delivery entrypoint for Cloudflare runtimes is `pr`, which lets CI publish preview URLs and perform the post-merge staging deploy

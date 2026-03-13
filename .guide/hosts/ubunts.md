@@ -1,57 +1,30 @@
 # ubunts.md
 
-Python local-engine runtime for repositories and services that run local processing or launcher workloads on Python.
+Python local-engine host constraints for repositories that run local processing or launcher workloads on Python.
 
-## Scope
+## Use Cases
 
-- Python runtime and environment constraints for local engines
-- process and dependency expectations tied to local Python execution
-- concrete CI and validation expectations shared by Python engine repositories
+- a repository runs local processing on Python
+- a repository runs launcher workloads on Python
+- a repository hosts a local Python engine behind a desktop application
+- a repository uses GPU-backed local processing for heavy workloads
+- a repository stores video assets locally
+- a repository stores image assets locally
 
-## Applies When
+## Constraints
 
-- A repository role runs as a local Python engine.
-- A repository adopts the Python toolchain defined under `../tools/`.
-
-## Baseline
-
-- Keep role responsibilities in `../roles/batch.md`.
-- Keep shared Python language and toolchain selection in the matching profiles under `../tools/`.
-- Use this file only for Python-runtime-specific constraints.
-
-## Delivery and Merge Gate
-
-- Own `feature -> dev` delivery automation for repositories that run as local Python engines.
-- Treat validation workflows, required checks, and `dev` merge-gate policy as runtime concerns.
-- Keep local-engine execution isolated from UI and network-edge policy; runtime setup does not expand repository role boundaries.
-- Keep Python dependency sync, validation workflow, and merge-gate naming explicit rather than inferred from generic Python adoption.
-- Let `setup-runtime-python` own:
-  - Python validation workflow definitions
-  - the `validate-python` required check
-  - `dev` branch-protection and auto-merge readiness
-
-## Runtime Constraints
-
-- Keep Python execution local-service style rather than browser- or network-edge style.
+- Keep Python execution local-service style.
+- Do not treat Python execution as browser-style execution.
+- Do not treat Python execution as network-edge execution.
+- Keep GPU-backed heavy processing explicit.
+- Keep video storage explicit.
+- Keep image storage explicit.
+- Keep local-engine execution isolated from UI policy.
+- Keep local-engine execution isolated from network-edge policy.
 - Keep virtual-environment management explicit through the selected Python package-management tool.
-- Keep entrypoints, package layout, and tool configuration explicit rather than inferred from incidental file layout.
-
-## Delivery Constraints
-
-- Keep the validation workflow responsible for the Python validation surface defined by the selected profiles under `../tools/`.
-- Keep `dev` merge-gate policy aligned with the runtime-owned `validate-python` check.
-- Do not treat ad hoc local execution as the repository's authoritative validation surface.
-
-## Repo-local Requirements
-
-- Each repository or shared concrete spec that adopts this runtime must define:
-  - launcher and entrypoint behavior
-  - package import root
-  - Python version baseline
-  - local-engine dependency surface
-
-## Non-goals
-
-- UI responsibilities
-- cloud-edge delivery semantics
-- provider-specific integration policy
+- Keep entrypoints explicit.
+- Keep package layout explicit.
+- Keep tool configuration explicit.
+- Do not infer entrypoints from incidental file layout.
+- Do not infer package layout from incidental file layout.
+- Do not infer tool configuration from incidental file layout.

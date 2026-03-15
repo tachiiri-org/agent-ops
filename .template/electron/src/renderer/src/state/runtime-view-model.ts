@@ -1,4 +1,4 @@
-import type { RuntimeDiagnosticsSnapshot } from '../contracts/runtime-diagnostics';
+import type { RuntimeDiagnosticsSnapshot } from '../contract/runtime-diagnostics';
 
 import { formatTimestampDisplay } from './timestamp-display';
 

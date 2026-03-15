@@ -1,11 +1,11 @@
-import { renderViewportSwitcher } from '../../components/viewport-switcher';
-import { renderPolicyExportButton } from '../../components/policy-export-button';
-import { renderTemplatePreviewCard } from '../../components/template-preview-card';
-import { renderExplorerDetailWorkspace } from '../../layouts/explorer-detail-workspace';
+import { renderViewportSwitcher } from '../../component/viewport-switcher';
+import { renderPolicyExportButton } from '../../component/policy-export-button';
+import { renderTemplatePreviewCard } from '../../component/template-preview-card';
+import { renderExplorerDetailWorkspace } from '../../layout/explorer-detail-workspace';
 import type { LayoutGalleryViewModel } from '../../state/layout-gallery-view-model';
 import { renderPreviewHost } from './preview-host';
 import { renderSelectorTopicList } from './render-selector-topic-list';
-import { getViewDefinition } from '../../views/view-registry';
+import { getViewDefinition } from '../../view/view-registry';
 
 const escapeHtml = (value: string): string =>
   value

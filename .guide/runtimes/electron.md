@@ -6,6 +6,14 @@
 - credentials must be stored with desktop-grade secure storage rather than browser storage
 - offline, local-processing, or device-integration behavior is required
 
+## Qualities
+
+- Let `main` own OS, filesystem, updater, and process side effects as one trusted runtime surface.
+- Let `preload` expose a narrow capability surface that is readonly by default and explicit when mutation is required.
+- Let IPC contracts enumerate runtime-owned capabilities rather than mirror internal module structure.
+- Let renderer diagnostics consume runtime snapshots through preload-owned contracts rather than query native state ad hoc.
+- Let launch and smoke scripts own display, sandbox, and GPU adaptation required by Electron host constraints rather than spread host workarounds across individual tests.
+
 ## Constraints
 
 - treat `renderer` as untrusted UI code relative to `preload` and `main`

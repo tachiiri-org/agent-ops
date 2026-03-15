@@ -1,4 +1,4 @@
-import type { ViewportProfile, ViewportProfileId } from '../contracts/viewport-profile';
+import type { ViewportProfile, ViewportProfileId } from '../contract/viewport-profile';
 
 export const renderViewportSwitcher = (
   profiles: readonly ViewportProfile[],

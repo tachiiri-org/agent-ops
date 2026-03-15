@@ -1,6 +1,6 @@
 import interactionPolicyDocument from '../../../../ui/interaction-policy.json';
 
-import type { InteractionPolicy } from '../contracts/interaction-policy';
+import type { InteractionPolicy } from '../contract/interaction-policy';
 
 const parseLayoutSelection = (value: string): InteractionPolicy['layoutSelection'] =>
   value === 'fixed' ? 'fixed' : 'gallery';

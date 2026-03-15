@@ -1,11 +1,11 @@
-import type { DesignPolicy } from '../contracts/design-policy';
-import type { InteractionPolicy } from '../contracts/interaction-policy';
-import type { LayoutPolicy } from '../contracts/layout-policy';
-import type { RuntimeDiagnosticsSource } from '../contracts/runtime-diagnostics-source';
-import { viewportProfiles } from '../contracts/viewport-profile';
+import type { DesignPolicy } from '../contract/design-policy';
+import type { InteractionPolicy } from '../contract/interaction-policy';
+import type { LayoutPolicy } from '../contract/layout-policy';
+import type { RuntimeDiagnosticsSource } from '../contract/runtime-diagnostics-source';
+import { viewportProfiles } from '../contract/viewport-profile';
 import { createRuntimeViewModel } from '../state/runtime-view-model';
 import { resolveRendererRoot } from './resolve-renderer-root';
-import { getViewDefinition } from '../views/view-registry';
+import { getViewDefinition } from '../view/view-registry';
 
 type MountDefaultViewOptions = {
   readonly getDesignPolicy: () => DesignPolicy;

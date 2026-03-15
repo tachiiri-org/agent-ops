@@ -1,23 +1,23 @@
-import type { DesignPolicy } from '../contracts/design-policy';
-import type { LayoutPolicy } from '../contracts/layout-policy';
-import type { RuntimeDiagnosticsSnapshot } from '../contracts/runtime-diagnostics';
-import type { RuntimeDiagnosticsSource } from '../contracts/runtime-diagnostics-source';
-import type { InteractionPolicy } from '../contracts/interaction-policy';
-import type { UiPolicy } from '../contracts/ui-policy';
-import type { LayoutTemplateId } from '../contracts/layout-template';
+import type { DesignPolicy } from '../contract/design-policy';
+import type { LayoutPolicy } from '../contract/layout-policy';
+import type { RuntimeDiagnosticsSnapshot } from '../contract/runtime-diagnostics';
+import type { RuntimeDiagnosticsSource } from '../contract/runtime-diagnostics-source';
+import type { InteractionPolicy } from '../contract/interaction-policy';
+import type { UiPolicy } from '../contract/ui-policy';
+import type { LayoutTemplateId } from '../contract/layout-template';
 import {
   defaultViewportProfileId,
   viewportProfiles,
   type ViewportProfileId,
-} from '../contracts/viewport-profile';
+} from '../contract/viewport-profile';
 import { createLayoutGalleryViewModel } from '../state/layout-gallery-view-model';
 import type {
   SidebarShellMobilePaneId,
   SidebarShellSectionId,
   SidebarShellTabId,
 } from '../state/layout-gallery-view-model';
-import { attachPatternSelector } from '../tools/pattern-selector/attach-pattern-selector';
-import { renderPatternSelectorScreen } from '../tools/pattern-selector/render-pattern-selector-screen';
+import { attachPatternSelector } from '../tool/pattern-selector/attach-pattern-selector';
+import { renderPatternSelectorScreen } from '../tool/pattern-selector/render-pattern-selector-screen';
 import {
   defaultSelectorConcernId,
   defaultSelectorTopicId,
@@ -25,7 +25,7 @@ import {
   selectorTopics,
   type SelectorConcernId,
   type SelectorTopicId,
-} from '../tools/pattern-selector/selector-navigation';
+} from '../tool/pattern-selector/selector-navigation';
 import { resolveRendererRoot } from './resolve-renderer-root';
 
 type MountTemplateGalleryOptions = {

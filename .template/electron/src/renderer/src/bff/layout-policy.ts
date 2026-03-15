@@ -1,8 +1,8 @@
 import layoutPolicyDocument from '../../../../ui/layout-policy.json';
 
-import type { LayoutPolicy } from '../contracts/layout-policy';
-import type { LayoutTemplate, LayoutTemplateId } from '../contracts/layout-template';
-import { viewRegistry } from '../views/view-registry';
+import type { LayoutPolicy } from '../contract/layout-policy';
+import type { LayoutTemplate, LayoutTemplateId } from '../contract/layout-template';
+import { viewRegistry } from '../view/view-registry';
 
 const layoutCatalog: readonly LayoutTemplate[] = viewRegistry.map((view) => ({
   description: view.description,

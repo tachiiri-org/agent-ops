@@ -11,8 +11,9 @@
 ## Surfaces
 
 - Treat `main`, `preload`, `shared`, and workflow files as the runtime baseline.
-- Treat `layouts`, `components`, `design`, and `contracts` as reusable catalog assets.
-- Treat `tools/pattern-selector` as an optional setup aid for choosing or exporting UI policy.
+- Treat `bff`, `interaction`, `screen`, `layout`, `component`, `design`, and `contract` as renderer concern roots even when some start as placeholders.
+- Treat `layout`, `component`, `design`, and `contract` as reusable catalog assets.
+- Treat `tool/pattern-selector` as an optional setup aid for choosing or exporting UI policy.
 - Treat `ui/*.json` as template-owned seed data that repositories can reconcile into their initial shell.
 
 ## Constraints

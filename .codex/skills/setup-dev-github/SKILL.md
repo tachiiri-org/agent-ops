@@ -7,25 +7,60 @@ description: Bootstrap GitHub development-platform state for a new repository, i
 
 Shared guidance reads in this workflow refer to files under `/home/tachiiri/.guide/`.
 
-## Workflow
+## Terms
 
-1. Read `principles.md`
-2. Read `principles/roles/ops.md`
-3. Read `principles/domains/ops-governance.md`
-4. Verify the target directory exists locally
-5. Verify working tree is clean
-6. Verify GitHub auth status
-7. Create the remote repository on GitHub
-8. Add or update the `origin` remote
-9. Ensure `main` exists locally and remotely
-10. Ensure `dev` exists off `main`
-11. Push initial branches as needed
-12. Confirm the repository is ready for role-, runtime-, idp-, and provider-setup modules
-13. Do not modify ongoing branch protection, required checks, or auto-merge policy here; role setup owns that reconciliation after bootstrap
+- Target Directory: the local repository root the user wants to bootstrap on GitHub
+- Repository Name: the basename of the Target Directory unless the user explicitly overrides it
+
+## Goals
+
+- bootstrap GitHub development-platform state for a repository that may not yet be initialized on GitHub
+- support Target Directories that may not yet be initialized as local Git repositories
+- create or reconcile the GitHub repository using the Repository Name by default
+- ensure `origin` points at the created or selected GitHub repository
+- ensure `main` exists locally and remotely as the bootstrap branch
+- ensure `dev` exists locally and remotely from `main`
+- normalize local and remote branch state so follow-up setup commands can assume the standard baseline
+- keep this workflow limited to repository bootstrap rather than policy or application setup
 
 ## Constraints
 
-- Do not mix application scaffold with GitHub repository bootstrap
-- Do not create provider-integration configuration here
-- Do not push directly to `main` after initial repository bootstrap
-- Do not use this command as the steady-state GitHub policy reconciler
+- do not mix application scaffold with GitHub repository bootstrap
+- do not create provider-integration configuration here
+- do not modify ongoing branch protection, required checks, or auto-merge policy here
+- do not use this command as the steady-state GitHub policy reconciler
+- do not push directly to `main` after the initial bootstrap commit and branch publication
+- do not overwrite an existing remote, branch history, or dirty working tree without reporting the decision point
+- run each shell command separately, not as compound commands (e.g. `&&`)
+
+## Hints
+
+- read `principles.md` before repository bootstrap decisions
+- read `roles/ops.md` when bootstrapping shared guidance or automation repositories
+- read only the minimum additional guidance needed for the repository role and stated goal
+- verify the Target Directory exists before any Git or GitHub operation
+- inspect the repository file tree with `git ls-files` when the repository already has Git metadata and with visible non-ignored files when it does not
+- if `.git` is missing, initialize the repository locally before any GitHub remote setup
+- if the repository has no commits yet, create the initial bootstrap commit from the existing local contents before pushing branches
+- use the Target Directory basename as the Repository Name unless the user explicitly requests a different remote name
+- verify GitHub auth status before attempting repository creation
+- create the GitHub repository when `origin` is absent and no matching remote repository is already configured
+- if `origin` exists, verify whether it already matches the intended Repository Name before changing it
+- ensure the local default branch is `main`
+- create `dev` from `main` after `main` is established
+- push `main` first when the remote repository is empty, then push `dev`
+- if remote branches already exist, reconcile to them without rewriting history
+- if the working tree is dirty, the local branch is diverged, or the remote target is ambiguous, report the state instead of auto-resolving it
+
+## Output
+
+Return:
+
+- target directory and repository name used for bootstrap
+- whether local Git initialization was already present or was created
+- whether the GitHub repository was already present or was created
+- `origin` remote status after reconciliation
+- current branch, working tree state, and local/remote sync state
+- whether `main` and `dev` are ready locally and remotely
+- which guidance was loaded
+- any decision points or follow-up constraints for later setup commands

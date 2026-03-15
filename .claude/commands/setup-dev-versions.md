@@ -8,8 +8,8 @@
 
 ## Workflow
 
-1. Read `principles/domains/ops-governance.md`
-2. Read `principles/domains/compatibility-and-change.md`
+1. Read `governance/operations.md`
+2. Read `compatibility/change.md`
 3. Verify the current repository is the ops repository
 4. Read the relevant tool profiles under `/home/tachiiri/.guide/tools/`
 5. Check the latest approved versions from primary upstream sources for the owned toolchain:

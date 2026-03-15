@@ -4,7 +4,7 @@
 
 SOT is at `/home/tachiiri`.
 
-- `.guide/`: docs of principles, profile and etc
+- `.guide/`: shared guidance docs
 - `AGENTS.md`: project-wide agent defaults and constraints
 - `CLAUDE.md`: behavioral constraints for this repository
 - `architecture.mmd`: system topology
@@ -14,6 +14,7 @@ SOT is at `/home/tachiiri`.
 
 - Guidance Files in repo root are synced with SOT
 - Read guidance files.
+- Inspect the repository file tree with `git ls-files`.
 - Repository role and runtime are classified.
 - Read related documents of the role, runtime, domain, and profile.
 - Working tree is clean and `dev` is aligned with `origin/dev`.

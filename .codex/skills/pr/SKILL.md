@@ -16,8 +16,8 @@ Shared guidance reads in this workflow refer to files under `/home/tachiiri/.gui
 
 ## Steps
 
-1. Read `principles/domains/ops-governance.md`
-2. Read `principles/domains/compatibility-and-change.md`
+1. Read `governance/operations.md`
+2. Read `compatibility/change.md`
 3. If the project is a Cloudflare runtime repository, read the matching runtime profile before checking release expectations
 4. Create `.gitignore` if no `.gitignore` is committed
 5. Create and switch to a feature branch if on `main` or `dev`

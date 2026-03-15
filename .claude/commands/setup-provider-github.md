@@ -2,10 +2,10 @@
 
 ## Workflow
 
-1. Read `profiles/providers/github.md`
-2. Read `principles/roles/adapter.md`
-3. Read `principles/domains/interaction-edges.md`
-4. Read `principles/domains/operations-and-delivery.md`
+1. Read provider-specific guidance under `providers/` when it exists for GitHub
+2. Read `roles/adapter.md`
+3. Read only the relevant shared boundary guidance under `boundaries/` for the adapter edge in scope
+4. Read `operations/delivery.md`
 5. Verify the repository directly integrates with GitHub at the adapter boundary
 6. Stop with an explanation if the repository does not directly integrate with GitHub
 7. Add only the minimal GitHub-related scaffolding and placeholders required for the adapter boundary
@@ -16,5 +16,5 @@
 
 - Do not apply outside repositories that directly integrate with GitHub
 - Do not treat development-platform bootstrap as provider integration
-- Do not add provider values into shared `principles/`
+- Do not add provider values into shared guidance
 - Do not use npm

@@ -16,14 +16,14 @@
 ## Workflow
 
 1. Read `providers/auth0.md`
-2. Read `principles/domains/identity-and-access.md`
-3. Read `principles/domains/interaction-edges.md`
+2. Read `identity/access.md`
+3. Read only the relevant shared boundary guidance under `boundaries/` for the Auth0 edge in scope, especially `browser-idp.md` or `desktop-app-idp.md` when applicable
 4. Read the role document that matches the repository when relevant:
-   - `principles/roles/bff.md`
+   - `roles/bff.md`
    - `roles/desktop-app.md`
-   - `principles/roles/front.md`
-   - `principles/roles/gateway.md` when a gateway directly validates Auth0-issued credentials
-   - `principles/roles/adapter.md` when an adapter directly validates Auth0-issued credentials
+   - `roles/front.md`
+   - `roles/gateway.md` when a gateway directly validates Auth0-issued credentials
+   - `roles/adapter.md` when an adapter directly validates Auth0-issued credentials
 5. Verify working tree is clean
 6. Classify whether the repository directly terminates, exchanges, refreshes, initiates, or validates Auth0-issued credentials
 7. Stop with an explanation if the repository does not directly integrate with Auth0
@@ -108,6 +108,6 @@
 
 - Do not make gateway or adapter repositories Auth0-aware by default
 - Do not bypass BFF as the browser authentication termination point when a BFF exists
-- Do not add provider-specific values into shared `principles/`
+- Do not add provider-specific values into shared guidance
 - Do not invent repository-local auth flows that conflict with `providers/auth0.md`
 - Do not use npm

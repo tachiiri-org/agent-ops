@@ -7,7 +7,7 @@ description: "Understand the repository, load the minimum guidance for the inten
 
 ## Terms
 
-- Required Documents: `principles/`, `profiles/`, `architecture.mmd`, `CLAUDE.md`, and `AGENTS.md` available from the shared guidance root at `/home/tachiiri/.guide`
+- Required Documents: `principles.md`, `architecture.mmd`, `CLAUDE.md`, and `AGENTS.md` available from the shared guidance root at `/home/tachiiri/.guide`
 - Required Reads: `architecture.mmd` and the instruction file for the current agent (`CLAUDE.md` for Claude, `AGENTS.md` for Codex)
 
 ## Goals
@@ -30,6 +30,7 @@ description: "Understand the repository, load the minimum guidance for the inten
 - don't install tools or use npm
 - stop after onboarding; do not start setup, implementation, deploy, PR, or release work
 - run each Bash command separately, not as compound commands (e.g. `&&`)
+- inspect the repository file tree with `git ls-files` before inferring repository structure
 
 ## Hints
 
@@ -41,6 +42,7 @@ description: "Understand the repository, load the minimum guidance for the inten
 - read adopted tool profiles only when the repository explicitly uses that tooling or framework
 - always read `architecture.mmd`
 - always read the instruction file for the current agent
+- inspect the repository file tree with `git ls-files` before inferring repository structure
 - fetch remote refs before evaluating branch alignment
 - in sandboxed environments, run remote Git operations with escalated permissions from the start
 - ensure `dev` exists; create it if missing
@@ -60,4 +62,3 @@ Return:
 - whether `dev` is ready, created, initialized, or not normalized
 - which guidance was loaded
 - key constraints for the intended work
-- the next recommended command(s)

@@ -9,8 +9,8 @@ Shared guidance reads in this workflow refer to files under `/home/tachiiri/.gui
 
 ## Steps
 
-1. Read `principles/domains/ops-governance.md`
-2. Read `principles/domains/compatibility-and-change.md`
+1. Read `governance/operations.md`
+2. Read `compatibility/change.md`
 3. Read `roles/desktop-app.md`
 4. Read `runtimes/electron.md`
 5. Verify GitHub auth: `gh auth status`

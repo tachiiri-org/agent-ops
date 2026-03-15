@@ -2,8 +2,8 @@
 
 ## Steps
 
-1. Read `principles/domains/ops-governance.md`
-2. Read `principles/domains/compatibility-and-change.md`
+1. Read `governance/operations.md`
+2. Read `compatibility/change.md`
 3. Verify current branch is `dev` (switch to dev if not)
 4. Ensure `dev` is pushed to remote
 5. Ensure there is an open PR from `dev` targeting `main`; create it only if it does not already exist

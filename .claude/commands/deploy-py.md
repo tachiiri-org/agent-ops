@@ -2,8 +2,8 @@
 
 ## Steps
 
-1. Read `principles/domains/ops-governance.md`
-2. Read `principles/domains/compatibility-and-change.md`
+1. Read `governance/operations.md`
+2. Read `compatibility/change.md`
 3. Read `roles/batch.md`
 4. Verify `wrangler` is available and authenticated (`wrangler whoami`)
 5. Read project `name` and `version` from `pyproject.toml`

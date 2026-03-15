@@ -1,7 +1,7 @@
 import type { RuntimeSnapshot } from '@shared/runtime-snapshot';
 
-import type { RuntimeDiagnosticsSnapshot } from '../../contracts/runtime-diagnostics';
-import type { RuntimeDiagnosticsSource } from '../../contracts/runtime-diagnostics-source';
+import type { RuntimeDiagnosticsSnapshot } from '../../contract/runtime-diagnostics';
+import type { RuntimeDiagnosticsSource } from '../../contract/runtime-diagnostics-source';
 
 import type { DesktopApi } from './desktop-api';
 

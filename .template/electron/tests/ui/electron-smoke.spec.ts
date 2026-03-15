@@ -12,16 +12,21 @@ const expectedEnvironment = expectedChannel === 'stable' ? 'production' : 'devel
 const expectedVersion = JSON.parse(
   readFileSync(resolve(projectRoot, 'package.json'), 'utf8'),
 ).version;
+const extraLaunchArgs = (process.env.PLAYWRIGHT_ELECTRON_EXTRA_ARGS ?? '')
+  .split(' ')
+  .map((value) => value.trim())
+  .filter((value) => value.length > 0);
 
 test('launches the built Electron app and renders the baseline UI', async () => {
   await mkdir(dirname(screenshotPath), { recursive: true });
 
   const electronApp = await electron.launch({
-    args: ['--no-sandbox', 'out/main/index.js'],
+    args: ['--no-sandbox', ...extraLaunchArgs, 'out/main/index.js'],
     cwd: projectRoot,
     env: {
       ...process.env,
       ELECTRON_DISABLE_SANDBOX: '1',
+      LIBGL_ALWAYS_SOFTWARE: process.env.LIBGL_ALWAYS_SOFTWARE ?? '1',
     },
   });
 
@@ -47,6 +52,7 @@ test('launches the built Electron app and renders the baseline UI', async () => 
   await expect(firstWindow.locator('#app-version')).toHaveText(expectedVersion);
   await expect(firstWindow.locator('#app-runtime')).toHaveText('electron');
   await expect(firstWindow.locator('#update-status')).toHaveText('disabled');
+  await firstWindow.waitForLoadState('domcontentloaded');
   await firstWindow.screenshot({ path: screenshotPath, fullPage: true });
 
   expect(pageErrors).toEqual([]);

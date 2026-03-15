@@ -1,4 +1,4 @@
-import type { ViewportProfile } from '../../contracts/viewport-profile';
+import type { ViewportProfile } from '../../contract/viewport-profile';
 
 export const renderPreviewHost = (
   viewport: ViewportProfile,

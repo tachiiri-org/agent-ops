@@ -1,4 +1,4 @@
-import type { LayoutTemplate, LayoutTemplateId } from '../contracts/layout-template';
+import type { LayoutTemplate, LayoutTemplateId } from '../contract/layout-template';
 
 const renderTemplateButton = (
   template: LayoutTemplate,

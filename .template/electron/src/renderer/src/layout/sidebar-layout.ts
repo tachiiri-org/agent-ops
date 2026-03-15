@@ -1,4 +1,4 @@
-import type { ViewportProfileId } from '../contracts/viewport-profile';
+import type { ViewportProfileId } from '../contract/viewport-profile';
 import type {
   SidebarShellMobilePaneId,
   SidebarShellSectionId,

@@ -1,7 +1,7 @@
-import { renderMetadataGrid } from '../components/metadata-grid';
-import { renderStatusBanner } from '../components/status-banner';
-import { renderSidebarLayout } from '../layouts/sidebar-layout';
-import type { UiViewDefinition, UiViewProps } from '../contracts/ui-view';
+import { renderMetadataGrid } from '../component/metadata-grid';
+import { renderStatusBanner } from '../component/status-banner';
+import { renderSidebarLayout } from '../layout/sidebar-layout';
+import type { UiViewDefinition, UiViewProps } from '../contract/ui-view';
 import type { SidebarShellSectionId } from '../state/layout-gallery-view-model';
 
 const renderSidebarShellHeader = (props: UiViewProps): string => {

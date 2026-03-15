@@ -1,6 +1,6 @@
 import designPolicyDocument from '../../../../ui/design-policy.json';
 
-import type { DesignPolicy } from '../contracts/design-policy';
+import type { DesignPolicy } from '../contract/design-policy';
 
 const parseDensity = (value: string): DesignPolicy['density'] =>
   value === 'compact' ? 'compact' : 'comfortable';

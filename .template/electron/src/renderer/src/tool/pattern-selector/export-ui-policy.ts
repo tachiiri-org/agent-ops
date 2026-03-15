@@ -1,4 +1,4 @@
-import type { UiPolicy } from '../../contracts/ui-policy';
+import type { UiPolicy } from '../../contract/ui-policy';
 
 export const exportUiPolicy = (uiPolicy: UiPolicy): void => {
   const policyBlob = new Blob([JSON.stringify(uiPolicy, null, 2)], {

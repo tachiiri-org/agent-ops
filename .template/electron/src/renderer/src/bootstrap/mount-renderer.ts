@@ -1,4 +1,4 @@
-import { electronRuntimeDiagnosticsSource } from '../adapters/electron/runtime-diagnostics-source';
+import { electronRuntimeDiagnosticsSource } from '../adapter/electron/runtime-diagnostics-source';
 import { getDesignPolicy } from '../bff/design-policy';
 import { getInteractionPolicy } from '../bff/interaction-policy';
 import { getLayoutPolicy } from '../bff/layout-policy';

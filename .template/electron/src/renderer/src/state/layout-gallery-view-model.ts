@@ -1,16 +1,16 @@
-import type { DesignPolicy } from '../contracts/design-policy';
-import type { InteractionPolicy } from '../contracts/interaction-policy';
-import type { LayoutPolicy, WorkspaceKind } from '../contracts/layout-policy';
-import type { RuntimeDiagnosticsSnapshot } from '../contracts/runtime-diagnostics';
-import type { LayoutTemplate, LayoutTemplateId } from '../contracts/layout-template';
-import type { ViewportProfile, ViewportProfileId } from '../contracts/viewport-profile';
+import type { DesignPolicy } from '../contract/design-policy';
+import type { InteractionPolicy } from '../contract/interaction-policy';
+import type { LayoutPolicy, WorkspaceKind } from '../contract/layout-policy';
+import type { RuntimeDiagnosticsSnapshot } from '../contract/runtime-diagnostics';
+import type { LayoutTemplate, LayoutTemplateId } from '../contract/layout-template';
+import type { ViewportProfile, ViewportProfileId } from '../contract/viewport-profile';
 import { createRuntimeViewModel, type RuntimeViewModel } from './runtime-view-model';
 import type {
   SelectorConcern,
   SelectorConcernId,
   SelectorTopic,
   SelectorTopicId,
-} from '../tools/pattern-selector/selector-navigation';
+} from '../tool/pattern-selector/selector-navigation';
 
 export type SidebarShellSectionId = 'ui-patterns' | 'design' | 'interaction' | 'runtime-info';
 

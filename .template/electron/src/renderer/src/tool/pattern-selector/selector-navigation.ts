@@ -1,4 +1,4 @@
-import type { LayoutTemplateId } from '../../contracts/layout-template';
+import type { LayoutTemplateId } from '../../contract/layout-template';
 
 export type SelectorConcernId = 'ui-patterns' | 'design' | 'interaction' | 'runtime-info';
 

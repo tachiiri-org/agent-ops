@@ -1,6 +1,6 @@
-import type { LayoutTemplateId } from '../../contracts/layout-template';
-import type { UiPolicy } from '../../contracts/ui-policy';
-import type { ViewportProfileId } from '../../contracts/viewport-profile';
+import type { LayoutTemplateId } from '../../contract/layout-template';
+import type { UiPolicy } from '../../contract/ui-policy';
+import type { ViewportProfileId } from '../../contract/viewport-profile';
 import type {
   SidebarShellMobilePaneId,
   SidebarShellSectionId,
